@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>执行统计</title>
+    <link rel="stylesheet" href="css/listview.css" th:href="@{css/listview.css}"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="js/increase.js"></script>
+    <script type="text/javascript" src="java_js/appeal.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<form action="#" th:action="@{/rescue_details1.html}" method="post">
+    <div class="box">
+        <div class="about">
+            <p>姓名：<input id="name" name="name" type="text"/></p>
+            <p>手机号：<input id="phone" name="phone" type="text"/></p>
+            <div class="function">
+                <input type="submit" class="search" value="搜索"/>
+                <input type="reset" value="清空"/>
+                <!--<button class="achieve"><a href="rescue_details1.html">完成</a></button>-->
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>手机号</th>
+                <th>紧急联系人</th>
+                <th>紧急联系人电话</th>
+                <th>诉求状态</th>
+                <th>地址</th>
+                <th>诉求时间</th>
+                <th>诉求内容</th>
+            </tr>
+            <tr class="tr-03" th:each="c:${appeals}">
+                <td attr="name" num="01" id="name" th:utext="${c.name}">梅长芳</td>
+                <td id="female" style="width:50px;" th:if="${c.gender}">女</td>
+                <td id="age" style="width:50px" th:utext="${c.age}">32</td>
+                <td id="phone" style="width:100px" th:utext="${c.phone}">12345678901</td>
+                <td id="contacts" style="width:80px;cursor:pointer" th:utext="${c.contactName}">张三</td>
+                <td id="contact_phone" style="width:110px;" th:utext="${c.contactPhone}">18910011818</td>
+                <td id="status" style="width:100px" th:if="${c.status}">未处理</td>
+                <td attr="site" id="site" num="01" th:utext="${c.address}">朝阳区 高碑店村 二区54号</td>
+                <td id="data" style="width:150px;" th:text="${c.startTime}">2016-01-26</td>
+                <td sttr="appeal_content" num="01" id="appeal_content" th:utext="${c.content}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <ul class="alert_box">
+        <li>姓名：<input type="text" class="name"/></li>
+        <li>性别：
+            <select name="sex">
+                <option value="man">男</option>
+                <option value="woman">女</option>
+            </select>
+        </li>
+        <li>年龄：<input type="text" class="age"/></li>
+        <li>救助人员工号：<input type="text" class="num"/></li>
+        <li>手机号：<input type="text" class="phone"/></li>
+        <li>紧急联系人：
+            <select name="contacts" class="contacts">
+                <option value="one">张三</option>
+                <option value="two">李四</option>
+                <option value="three">王五</option>
+            </select>
+        </li>
+        <li>紧急联系电话：<input type="text" class="contacts_phone"/></li>
+        <li>诉求状态：
+            <select name="demands_state" class="demands_state">
+                <option value="0">未处理</option>
+                <option value="1">处理</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">地址：<input type="text" class="site"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">救出时间：<input type="text" class="data"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn" value="确定"/></li>
+    </ul>
+
+    <div class="page">
+        <ul>
+            <li class="btn Btn" th:if="${appeals.hasPrevious()}"><input type="button" value="上一页"/></li>
+            <li class="btn">
+                <select name="size" id="size" style="width: 80px; margin-top: 12px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="10" selected="selected">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </li>
+            <li class="btn Btn" th:if="${appeals.hasNext()}"><input type="button" value="下一页"/></li>
+            <li class="btn">到第&nbsp;&nbsp;
+                <input type="text" id="page" name="page" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                       maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+            </li>
+            <li><input type="submit" value="确定"/></li>
+            <li>共<span th:text="${appeals.totalPages}">100</span>页</li>
+        </ul>
+        <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+        </select>
+    </div>
+</form>
+</body>
+</html>

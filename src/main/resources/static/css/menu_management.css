@@ -1,0 +1,156 @@
+@charset "utf-8";
+/* CSS Document */
+.box {
+    width: 1260px;
+    height: auto;
+    min-width: 989px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.box div {
+    float: left;
+    margin: 0px 10px;
+    overflow: hidden;
+    padding-top: 3px;
+}
+
+.box .about {
+    width: 100%;
+    height: 35px;
+    line-height: 20px;
+}
+
+.box .about div {
+    width: 50px;
+    height: 28px;
+    linne-height: 28px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.box table {
+    width: 100%;
+    height: auto;
+    border-top: 1px solid orange;
+    min-width: 1200px;
+    overflow: hidden;
+}
+
+.box table th {
+    border-bottom: 1px solid orange;
+    height: 30px;
+    line-height: 30px;
+    background: #fff;
+    border-right: 1px solid #e3783b;
+}
+
+.box table .th_name {
+    text-align: left;
+    width: 260px;
+}
+
+.box table .th_name input {
+    margin-left: 10px;
+    margin-right: 80px;
+}
+
+.box table td {
+    width: 150px;
+    text-align: center;
+    border-bottom: 1px dashed #777;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #e3783b;
+    position: relative;
+}
+
+.box table .name_first {
+    text-align: left;
+}
+
+.box table .name_first input {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.box table .name_first img {
+    margin-right: 5px;
+}
+
+.box table .name_second {
+    text-align: left;
+}
+
+.box table .name_second input {
+    margin-left: 10px;
+    margin-right: 60px;
+}
+
+.box table .name_second img {
+    margin-right: 5px;
+}
+
+.box table .name_second2 {
+    text-align: left;
+}
+
+.box table .name_second2 input {
+    margin-left: 10px;
+    margin-right: 45px;
+}
+
+.box table .name_second2 img {
+    margin-right: 5px;
+}
+
+.box table .name_third {
+    text-align: left;
+}
+
+.box table .name_third input {
+    margin-left: 10px;
+    margin-right: 80px;
+}
+
+.box table .name_third img {
+    margin-right: 5px;
+}
+
+.page {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px solid #e3783b;
+    background: #eae3df;
+}
+
+.page ul {
+    width: 55%;
+    height: 100%;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.page ul li {
+    float: left;
+    margin: 0px 10px;
+    height: 100%;
+    line-height: 50px;
+}
+
+.page ul li input {
+    width: 80px;
+    text-align: center;
+    border: 1px solid #e3783b;
+    border-radius: 6px;
+    background: #e3783b;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+

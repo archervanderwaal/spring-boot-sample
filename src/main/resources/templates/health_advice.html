@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>健康建议</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/a_key_set.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            width: 304px;
+            height: 25px;
+            margin: 5px 100px 0 0;
+            border: 1px solid #aaa;
+            padding-left: 15px;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .sex {
+            width: 70px;
+            padding-left: 0px;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <p>姓名：<input type="text"/></p>
+        <div class="function">
+            <div class="search">搜索</div>
+            <div class="empty">清空</div>
+            <div class="revise">修改</div>
+            <div class="proposal">建议</div>
+            <div class="increase">增加</div>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>身高</th>
+            <th>体重</th>
+            <th>血压值</th>
+            <th>血糖值</th>
+            <th>睡眠质量</th>
+            <th>运动量</th>
+            <th>忌口</th>
+            <th>病史</th>
+            <th>状态</th>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" class="name" style="width:60px;">梅长芳</td>
+            <td attr="" num="01" class="age" style="width:50px">女</td>
+            <td attr="" num="01" class="age" style="width:50px">30</td>
+            <td attr="location" class="height" num="01" style="width:80px;">165cm</td>
+            <td attr="" class="weight" num="01" style="width:50px;">50kg</td>
+            <td attr="location" class="pressure" num="01" style="width:100px;">5.8毫摩尔/升</td>
+            <td attr="location" class="blood_sugar " num="01" style="width:100px;">6.1mmol/L</td>
+            <td attr="name" num="01" class="name" style="width:100px;"></td>
+            <td attr="name" num="01" class="name" style="width:100px;"></td>
+            <td attr="name" num="01" class="name" style="width:100px;">辣椒，海鲜</td>
+            <td attr="name" num="01" class="name" style="width:100px;">高血压</td>
+            <td attr="name" num="01" class="name" style="width:100px;">已建议</td>
+        </tr>
+    </table>
+</div>
+
+<ul class="proposal_box"
+    style="display: none;width:600px;height:100px;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">
+        <table border="" cellspacing="0" cellpadding="0" width="590" align="center">
+            <tr>
+                <th><input type="text" name="bt" id="bt" placeholder="标题"
+                           style="width:100%;border: none;background: #eae3df;"/></th>
+            </tr>
+            <tr>
+                <td><input type="text" name="nr" id="nr" placeholder="短信内容"
+                           style="width:100%;border: none;background: #eae3df;"/></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="button" class="btn"
+                                       style="width:100px; height:30px; text-align: center; display:block; margin:0 auto; border-radius:10px; background:#e3783b;"
+                                       value="发送"/></td>
+            </tr>
+        </table>
+    </li>
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn"
+                                             style="background:#eae3df; cursor:text; color:#000;" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

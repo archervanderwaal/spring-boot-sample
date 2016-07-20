@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>救援物品登记</title>
+
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/equipment.js" type="text/javascript"></script>
+    <style type="text/css">
+        select {
+            width: 70px;
+            float: left;
+            height: 25px;
+            margin: 5px 0px 0 0;
+            padding-left: 0px;
+            text-align: center;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <p>时间：<input type="text"/></p>
+        <div class="function">
+            <button class="search">搜索</button>
+            <button class="empty">清空</button>
+            <button class="equipment">配备</button>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>员工姓名</th>
+            <th>工号</th>
+            <th>时间</th>
+            <th>消防栓</th>
+            <th>工具箱</th>
+            <th>对讲机</th>
+            <th>记录仪</th>
+            <th>救助车辆</th>
+            <th>服装</th>
+            <th>其他用品记录</th>
+            <th>备注</th>
+            <th>记录人</th>
+        </tr>
+        <tr class="tr02">
+            <td attr="queue" num="01" class="none"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" id="name">梅长芳</td>
+            <td attr="num" num="01" id="num">1234567890</td>
+            <td sttr="" num="01" id="data">2016-01-26 10:20:32</td>
+            <td attr="" num="01" id="fireplug">正常</td>
+            <td attr="" num="01" id="toolbox">正常</td>
+            <td attr="" num="01" id="interphone">正常</td>
+            <td attr="" num="01" id="recorder">正常</td>
+            <td attr="" num="01" id="rescue_vehicle">正常</td>
+            <td attr="" num="01" id="clothing">正常</td>
+            <td attr="" num="01" id="record">救心丸一粒，云南白药</td>
+            <td attr="" num="01" id="remarks">救助车没电，缺少救助工具</td>
+            <td attr="" num="01" id="sub">惠东海</td>
+        </tr>
+    </table>
+</div>
+<ul class="alert_box5">
+    <li class="li01">消防栓 <input type="checkbox" class="fireplug"/></li>
+    <li>工具箱 <input type="checkbox" class="toolbox"/></li>
+    <li>对讲机 <input type="checkbox" class="interphone"/></li>
+    <li>记录仪 <input type="checkbox" class="recorder"/></li>
+    <li>救助车辆 <input type="checkbox" class="rescue_vehicle"/></li>
+    <li>服装 <input type="checkbox" class="clothing"/></li>
+    <li>其他用品记录：<input type="text" class="remarks"/></li>
+    <li class="li02">备注：<input type="text" class="remarks"/></li>
+    <li class="li03">
+        <button class="btn">消失</button>
+        <button>确定</button>
+    </li>
+</ul>
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div></div>
+</body>
+</html>

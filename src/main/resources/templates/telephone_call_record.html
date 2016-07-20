@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>电话呼叫记录</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <p>姓名：<input type="text"/></p>
+        <p>性别：<input type="text"/></p>
+        <div class="function">
+            <button class="search">搜索</button>
+            <button class="increase">添加</button>
+            <button class="delete">删除</button>
+            <button class="revise">修改</button>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>呼叫时间</th>
+            <th>呼入电话</th>
+            <th>处理时间</th>
+            <th>处理人员</th>
+            <th>服务体系</th>
+            <th>处理结果</th>
+            <th>备注</th>
+            <th>呼叫用户类型</th>
+        </tr>
+        <tr class="tr--002">
+            <td attr="queue" num="01" id="none"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" id="name">梅长芳</td>
+            <td attr="queue" num="01" id="sex">女</td>
+            <td attr="queue" num="01" id="age">20</td>
+            <td attr="" num="01" id="call_time">2016-01-28 15:59——2016-01-28 16:05</td>
+            <td attr="" num="01" id="phone">12345678901</td>
+            <td attr="" num="01" id="processing_time">2016-01-28 15:59</td>
+            <td attr="location" num="01" id="processing">惠东海</td>
+            <td attr="" num="01" id="service_system">公益服务</td>
+            <td attr="" num="01" id="result">已处理</td>
+            <td attr="" num="01" id="remarks"></td>
+            <td attr="" num="01" id="customer_type"></td>
+        </tr>
+    </table>
+</div>
+<ul class="alert_box">
+    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="name"/></li>
+    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+        <select name="sex">
+            <option value="man">男</option>
+            <option value="woman">女</option>
+        </select>
+    </li>
+    <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：<input type="text" class="age"/></li>
+    <li>呼叫时间：<input type="text" class="call_time"/></li>
+    <li>呼入电话：<input type="text" class="phone"/></li>
+    <li>处理时间：<input type="text" class="processing_time"/></li>
+    <li>处理人员：<input type="text" class="processing"/></li>
+    <li>服务体系：
+        <select name="service_system" class="service_system">
+            <option value="1">公益服务</option>
+            <option value="2">测试</option>
+        </select>
+    </li>
+
+    <li>处理结果：
+        <select name="result" class="result">
+            <option value="1">已处理</option>
+            <option value="2">未处理</option>
+        </select>
+    </li>
+    <li>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：<input type="text" class="remarks"/></li>
+    <li>呼叫用户类型：<input type="text" class="customer_type"/></li>
+    <li><input type="button" class="btn" value="确定"/></li>
+</ul>
+
+<ul class="increase_box">
+    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="name"/></li>
+    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+        <select name="sex">
+            <option value="man">男</option>
+            <option value="woman">女</option>
+        </select>
+    </li>
+    <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：<input type="text" class="age"/></li>
+    <li>呼叫时间：<input type="text" class="call_time"/></li>
+    <li>呼入电话：<input type="text" class="phone"/></li>
+    <li>处理时间：<input type="text" class="processing_time"/></li>
+    <li>处理人员：<input type="text" class="processing"/></li>
+    <li>服务体系：
+        <select name="service_system" class="service_system">
+            <option value="1">公益服务</option>
+            <option value="2">测试</option>
+        </select>
+    </li>
+    <li>处&nbsp;理&nbsp;&nbsp;果：
+        <select name="result" class="result">
+            <option value="1">已处理</option>
+            <option value="2">未处理</option>
+        </select>
+    </li>
+    <li>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：<input type="text" class="remarks"/></li>
+    <li>呼叫用户类型：<input type="text" class="customer_type"/></li>
+    <li><input type="button" class="btn" value="确定"/></li>
+</ul>
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38.5rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div></div>
+</body>
+</html>

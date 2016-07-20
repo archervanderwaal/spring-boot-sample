@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Money like后台管理</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{static/css/style.css}"/>
+    <link href="css/index.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/web-info.js"></script>
+    <script src="js/plant.js"></script>
+    <script src="js/zhuanti.js"></script>
+    <script>
+        function login() {
+            window.location.replace("login.html");
+        }
+    </script>
+</head>
+<body>
+<!--header 标题栏-->
+<header>
+    <div>
+        <p>标题栏</p>
+        <span class="Arrow"></span>
+    </div>
+</header>
+<!--logo-->
+<div class="logo">
+    <p><img src="images/logo.png" alt="logo"/></p>
+    <div class="title">Money &nbsp;like后台管理</div>
+    <div class="right">
+        <p>用户名：<span th:if="${adminInfo != null}" th:text="${adminInfo.name}">飞流</span></p>
+        <p>身份：<span>系统管理员</span></p>
+        <input type="button" value="注销" onclick="login()"/>
+    </div>
+</div>
+<!--内容块-->
+<div class="container">
+    <!--菜单-->
+    <ul class="listview">
+        <div class="title"><span class="list-nav">菜单浏览</span><span class="slide"></span></div>
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>用户管理</span>
+            <ul style="display: none;">
+                <li class="listBtn" data-src="watch_user.html" data-id="1"><span>查看手表用户</span></li>
+                <li class="listBtn" data-src="app_user.html" data-id="1"><span>查看APP用户</span></li>
+            </ul>
+        </li>
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>诉求管理</span>
+            <ul style="display: none;">
+                <li class="listBtn" data-src="jurisdiction.html" data-id="4"><span>管辖区域</span></li>
+                <li class="listBtn" data-src="rescue_details.html" data-id="4"><span>增加订单</span></li>
+                <li class="listBtn" data-src="rescue_personnel_supervise.html" data-id="4"><span>救援人员管理</span></li>
+                <!--<li class="listBtn" data-src="rescue_workers_map.html" data-id="4"><span>救援人员地图</span></li>-->
+                <li class="listBtn" data-src="rescue_details1.html" data-id="5"><span>执行统计</span></li>
+                <li class="listBtn" data-src="registration_supplies.html" data-id="6"><span>救援物品登记</span></li>
+                <li class="listBtn" data-src="appeal_historical_record.html" data-id="25"><span>订单历史记录</span></li>
+                <li class="listBtn" data-src="evaluate_file.html" data-id="27"><span>评价存档</span></li>
+                <li class="listBtn" data-src="demand_status_track.html" data-id="27"><span>诉求状态跟踪</span></li>
+            </ul>
+        </li>
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>手环管理</span>
+            <ul style="display: none;">
+                <li class="listBtn" data-src="sleep_quality.html" data-id="7"><span>睡眠质量</span></li>
+                <li class="listBtn" data-src="heart_rate_test.html" data-id="8"><span>心率测试</span></li>
+                <!--<li class="listBtn" data-src="temperature_test.html" data-id="8"><span>体温测试</span></li>-->
+                <!--<li class="listBtn" data-src="walk.html" data-id="12" style="margin-left:-12px;">-->
+                <li class="listBtn" data-src="walk.html" data-id="12">
+                    <!--<span class="close open box"><img src="images/jilu.png" alt=""/>运动测试</span>-->
+                    <span>运动测试</span>
+                    <!--<ul style="display: none;">-->
+                    <!--<li class="listBtn" data-src="ride_bike.html" data-id="13" style="padding-left:5px;cursor:pointer">-->
+                    <!--<span><img src="images/page.png" alt=""/>骑车</span></li>-->
+                    <!--<li class="listBtn" data-src="run.html" data-id="14" style="padding-left:5px;cursor:pointer">-->
+                    <!--<span><img src="images/page.png" alt=""/>跑步</span></li>-->
+                    <!--<li class="listBtn" data-src="mountaineering.html" data-id="15" style="padding-left:5px;cursor:pointer">-->
+                    <!--<span><img src="images/page.png" alt=""/>登山</span></li>-->
+                    <!--<li class="listBtn" data-src="walk.html" data-id="15" style="padding-left:5px;cursor:pointer">-->
+                    <!--<span><img src="images/page.png" alt=""/>步行</span></li>-->
+                    <!--</ul>-->
+                </li>
+                <li class="listBtn" data-src="set_fence.html" data-id="9"><span>围栏设置</span></li>
+                <li class="listBtn" data-src="order_processing.html" data-id="9"><span>订单处理</span></li>
+                <li class="listBtn" data-src="charging_reminder.html" data-id="11"><span>充电提醒</span></li>
+                <li data-src="zhuanjia_user.html" data-id="12" style="margin-left:-12px;">
+                    <span class="close open box"><img src="images/jilu.png" alt=""/>健康提醒与建议</span>
+                    <ul style="display: none;">
+                        <li class="listBtn" data-src="dietary_advice.html" data-id="13"
+                            style="padding-left:5px;cursor:pointer">
+                            <span><img src="images/page.png" alt=""/>饮食建议</span></li>
+                        <!--<li class="listBtn" data-src="medication_reminders.html" data-id="14" style="padding-left:5px;cursor:pointer">
+                        <span><img src="images/page.png" alt=""/>用药提醒</span></li>-->
+                        <li class="listBtn" data-src="birthday_reminder.html" data-id="15"
+                            style="padding-left:5px;cursor:pointer">
+                            <span><img src="images/page.png" alt=""/>生日提醒</span></li>
+                        <li class="listBtn" data-src="health_advice.html" data-id="15"
+                            style="padding-left:5px;cursor:pointer">
+                            <span><img src="images/page.png" alt=""/>健康建议</span></li>
+                    </ul>
+                </li>
+                <li class="listBtn" data-src="weather_broadcast.html" data-id="16"><span>天气播报</span></li>
+                <!--<li data-src="zhuanjia_user.html" data-id="17" style="margin-left:-12px;">
+                  <span class="close open box"><img src="images/jilu.png" alt=""/>心率测试</span>
+                  <ul>
+                    <li class="listBtn" data-src="test_result.html" data-id="18" style="padding-left:5px;cursor:pointer">
+                    <span><img src="images/page.png" alt=""/>测试结果</span></li>
+                  </ul>
+                </li>-->
+                <li class="listBtn" data-src="device_management.html" data-id="19"><span>设备管理</span></li>
+            </ul>
+        </li>
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>系统管理</span>
+            <ul style="display: none;">
+                <!--<li class="listBtn" data-src="menu_management.html" data-id="20"><span>菜单管理</span></li>-->
+                <!--<li class="listBtn" data-src="role_management.html" data-id="21"><span>角色管理</span></li>-->
+                <li class="listBtn" data-src="department.html" data-id="22"><span>部门管理</span></li>
+                <!--<li class="listBtn" data-src="zhuanjia_user.html" data-id="23"><span>菜单位置管理</span></li>-->
+                <li class="listBtn" data-src="user_login_monitoring.html" data-id="24"><span>用户登录监控</span></li>
+            </ul>
+        </li>
+        <!--<li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>诉求</span>
+            <ul>
+                <li class="listBtn" data-src="normal_user.html" data-id="25"><span>诉求筛选</span></li>
+                <li class="listBtn" data-src="zhuanjia_user.html" data-id="26"><span>服务配单</span></li>
+                <li class="listBtn" data-src="evaluate_file.html" data-id="27"><span>评价存档</span></li>
+                <li class="listBtn" data-src="demand_status_track.html" data-id="27"><span>诉求状态跟踪</span></li>
+            </ul>
+        </li>-->
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>到访管理</span>
+            <ul style="display: none;">
+                <li class="listBtn" data-src="call_user_management.html" data-id="28"><span>呼叫用户管理</span></li>
+            </ul>
+        </li>
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>呼叫信息查询</span>
+            <ul style="display: none;">
+                <li class="listBtn" data-src="telephone_call_record.html" data-id="30"><span>电话呼叫记录</span></li>
+                <li class="listBtn" data-src="telephone_appeals.html" data-id="31"><span>电话诉求体系统计</span></li>
+            </ul>
+        </li>
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>统计报告</span>
+            <ul style="display: none;">
+                <li class="listBtn" data-src="sex_ratio_statistics.html" data-id="32"><span>性别比例统计</span></li>
+                <li class="listBtn" data-src="health.html" data-id="33"><span>健康比例统计</span></li>
+                <li class="listBtn" data-src="statistics_population.html" data-id="34"><span>各年龄段人数统计</span></li>
+            </ul>
+        </li>
+        <li style="padding-left:5px;cursor:pointer">
+            <span class="close open box"><img src="images/file.png" alt=""/>数据维护</span>
+            <ul style="display: none;">
+                <li class="listBtn" data-src="volunteer.html" data-id="35"><span>志愿者信息管理</span></li>
+            </ul>
+        </li>
+    </ul>
+    <!--显示-->
+    <ul class="listshow">
+        <div class="title">信息</div>
+        <ul class="top">
+            <!--<li class="listBtn active ListBtn" data-src="user-watchuser.html"><span>查看手表用户</span><span class="delete">X</span></li>-->
+            <!--<li class="listBtn ListBtn" data-src="update-area.html"><span>救援区域</span><span class="delete">X</span></li>-->
+        </ul>
+        <iframe src="" frameborder="0" id="iframe"></iframe>
+        <div style="width:100%;height:284px; padding-top:150px;text-align: center;color:#e3783b;font-size:40px;display: block"
+             id="tishi">
+            Money like后台管理系统
+        </div>
+    </ul>
+
+    <div style="clear:both"></div>
+    <div class="zhanwei" style="height:100px;">
+        <!--占位-->
+    </div>
+</div>
+</body>
+</html>

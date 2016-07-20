@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>test api</title>
+</head>
+<body>
+<input type="text" name="urlInput" id="urlInput" value="/aa"/>
+<button id="btn1">go</button>
+<br/>
+<textarea id="textarea1" style="width: 400px;height: 300px;"></textarea>
+
+<form action="#">
+    <input type="file" name="file" id="fileInput"/>
+</form>
+
+
+<script src="../statics/webjars/jquery/jquery-1.11.3.js" th:src="@{/webjars/jquery/jquery-1.11.3.js}"/>
+<script src="../statics/webjars/blueimpFileUpload/js/vendor/jquery.ui.widget.js"
+        th:src="@{/webjars/blueimpFileUpload/js/vendor/jquery.ui.widget.js}"/>
+<script src="../statics/webjars/blueimpFileUpload/js/jquery.iframe-transport.js"
+        th:src="@{/webjars/blueimpFileUpload/js/jquery.iframe-transport.js}"/>
+<script src="../statics/webjars/blueimpFileUpload/js/jquery.fileupload.js"
+        th:src="@{/webjars/blueimpFileUpload/js/jquery.fileupload.js}"/>
+<script>
+    $(function () {
+        var $textarea1 = $("#textarea1");
+        //文件上传测试
+        testUpload();
+
+        // get 请求测试
+        $("#btn1").click(function () {
+            console.log('click');
+
+            testApi();
+        });
+
+        function testUpload() {
+            documentgetElementById("resultname");
+            $('#fileInput').fileupload({
+                url: "/upload/image",
+                dataType: 'json',
+                add: function (e, data) {
+                    showMsg("正在上传..");
+                    data.submit();
+                },
+                done: function (e, data) {
+                    showMsg(JSON.stringify(data.result));
+                }
+            });
+        }
+
+        function showMsg(s) {
+            $textarea1.val(s);
+        }
+
+        function testApi() {
+            var url = $("#urlInput").val();
+            console.log(url);
+            $.ajax({
+                url: "/upload/image",
+                type: "get",
+                data: {t: 1},
+                dataType: 'json',
+                success: function (data) {
+                    console.log('result');
+                    $textarea1.val(data);
+                },
+                error: function (xhr) {
+                    var message = xhr.responseText;
+                    console.log(message);
+                    $("#textarea1").val(message);
+                },
+                complete: function () {
+                    console.log("complete");
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>充电提醒</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/a_key_set.js"></script>
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <div class="about">
+        <p>姓名：<input type="text"/></p>
+        <div class="function">
+            <div class="search">搜索</div>
+            <div class="empty">清空</div>
+            <div class="statistics">统计</div>
+            <div class="key_reminder" style="width: 70px;">一键提醒</div>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>标识码</th>
+            <th>手机号</th>
+            <th>紧急联系人</th>
+            <th>紧急联系人电话</th>
+            <th>当前电量</th>
+            <th>在线状态</th>
+            <th>时间</th>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" id="name" style="width:50px;">梅长芳</td>
+            <td attr="" num="01" id="num" style="width:90px">1234567890</td>
+            <td attr="" num="01" id="phone" style="width:90px">12345678901</td>
+            <td attr="contact" num="01" id=" contact" style="width:100px;">
+                <select name="contact" style="background: #eae3df;border: none;text-align: center;width: 100%;">
+                    <option value="1">张三</option>
+                    <option value="2">李四</option>
+                    <option value="3">王五</option>
+                </select>
+            </td>
+            <td attr="" num="01" id="contacts_phone" style="width:110px;">18910011818</td>
+            <td attr="" num="01" class="money" style="width:70px;">50%</td>
+            <td attr="" num="01" class="money" style="width:70px;">在线</td>
+            <td attr="" num="01" class="none" style="width:200px">2016-01-28 15:59:01</td>
+        </tr>
+    </table>
+</div>
+
+<ul class="statistics_box"
+    style="display: none;width:600px;height:100px;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">
+        <table border="" cellspacing="0" cellpadding="0" width="590" align="center">
+            <tr>
+                <th>在线人数</th>
+                <th>未在线人数</th>
+                <th>总用户人数</th>
+            </tr>
+            <tr>
+                <td>2000</td>
+                <td>3000</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="button" class="btn"
+                                       style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                       value="确定"/></td>
+            </tr>
+        </table>
+    </li>
+</ul>
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

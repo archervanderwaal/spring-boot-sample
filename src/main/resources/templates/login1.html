@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Insert title here</title>
+</head>
+
+<link type="text/css" rel="stylesheet" href="../static/css/login.css" th:href="@{css/login.css}"/>
+<!--<script type="text/javascript" src="js/jquery-2.1.1.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery.form.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery.serialize-object.min.js"></script>-->
+<!--<script type="text/javascript" src="java_js/login.js"></script>-->
+<body>
+<!--[if lt IE 9]>
+<div class="browser-happy">
+    <div class="content">
+        <p>作为前端开发人员，还用这么low的浏览器，再不更新会遭鄙视的～～</p>
+        <p>本站不支持IE9以下浏览器访问！</p>
+        <a href="http://browsehappy.com/">立即更新</a>
+    </div>
+</div>
+<![endif]-->
+
+<h1>Hello, Welcome to MoneyLike!</h1>
+<div id="global">
+    <fieldset>
+        <legend>Login MoneyLike-Web</legend>
+        <form action="#" th:action="@{/admin_login.html}" th:object="${admin}" method="post">
+            <p>
+                <label for="name">name:</label>
+                <input type="text" name="name" id="name"/>
+            </p>
+            <p>
+                <label for="password">password:</label>
+                <input type="password" name="password" id="password"/>
+            </p>
+            <p>
+                <input type="submit" value="Login"/>
+            </p>
+            <span id="result-message" th:text="${message}"></span>
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>

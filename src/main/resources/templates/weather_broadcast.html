@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>天气播报</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/a_key_set.js"></script>
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <div class="about">
+        <p>姓名：<input type="text"/></p>
+        <div class="function">
+            <button class="search">搜索</button>
+            <button class="empty">清空</button>
+            <button class="voice">语音播报</button>
+            <button class="message">短信提醒</button>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>标识码</th>
+            <th>当前气温</th>
+            <th>日期</th>
+            <th>记录</th>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" id="name">梅长芳</td>
+            <td attr="" num="01" id="num">1234567890</td>
+            <td attr="" num="01" class="money">28°C</td>
+            <td attr="" num="01" class="none">2016-01-28 15:59:01</td>
+            <td attr="name" num="01" id="name">已播报</td>
+        </tr>
+    </table>
+</div>
+<ul class="message_box" style="display:none;">
+    <li>
+            <table border="" cellspacing="0" cellpadding="0" width="590" align="center">
+                <tr>
+                    <th><input type="text" name="bt" id="bt" placeholder="标题"/></th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="nr" id="nr" placeholder="短信内容"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="button" class="btn" value="发送"/></td>
+                </tr>
+            </table>
+        </table>
+    <li class="li-1">
+        <button class="xiaoshi">消失</button>
+        <button>确定</button>
+    </li>
+    </li>
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select style=" width:3.5rem;margin:-36px 37rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div></div>
+</body>
+</html>

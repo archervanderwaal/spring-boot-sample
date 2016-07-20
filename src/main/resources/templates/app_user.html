@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>查看APP手机用户</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/jquery.serialize-object.min.js"></script>
+
+    <script type="text/javascript" src="js/appmodify.js"></script>
+    <script type="text/javascript" src="java_js/watch.js"></script>
+    <script type="text/javascript" src="java_js/app_user.js" th:src="@{java_js/app_user.js}"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="about">
+        <form action="#" th:action="@{/app_user.html}" method="get">
+            <p><label for="name">用户名：</label><input type="text" id="name" name="name"/></p>
+            <p><label for="phone">手机号：</label><input type="text" id="phone" name="phone"/></p>
+            <p><label for="gender">性别：</label>
+                <select class="gender" style="margin-top: 5px;" id="gender" name="gender">
+                    <option value="全部">全部</option>
+                    <option value="女">女</option>
+                    <option value="男">男</option>
+                    <option value="未知">未知</option>
+                </select>
+            </p>
+            <div class="function">
+                <!--<input type="button" onclick="window.location.replace('/user_search.html?name=' + $('#name').val() + '&amp;phone=' + $('#phone').val() + '&amp;imei=' + $('#imei').val() + '&amp;serviceStatus=' + $('#status').val())" value="搜索"/>-->
+                <!--<input type="button" onclick="$('#name').val('');$('#phone').val('');$('#watchId').val('');$('#status').val('-1')" value="清空"/>-->
+                <!--<div class="revise">修改</div>
+                <div class="increase">增加</div>
+                <div class="delete">删除</div>-->
+
+                <div class="revise">修改</div>
+                <div class="increase">新增</div>
+                <!--<div class="delete">删除</div>-->
+                <!--<input type="button" th:value="修改" class="revise"/>
+                <input type="button" th:value="增加" class="increase"/>
+                <input type="button" th:value="删除" class="delete"/>-->
+
+                <div class="derive" style="width: 70px;" onclick="ajax_output()">导出数据</div>
+                <input type="submit" value="搜索"/>
+                <input type="reset"
+                       onclick="$('#name').val('');$('#phone').val('');$('#watchImei').val('');$('#status').val('-1')"
+                       value="清空"/>
+            </div>
+        </form>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>用户编号</th>
+            <th>用户名</th>
+            <th>注册时间</th>
+            <th>性别</th>
+            <th>生日</th>
+            <th>手机号</th>
+            <th>详细信息</th>
+
+        </tr>
+        <tr th:if="${appUsers != null}" th:each="c:${appUsers}">
+            <td attr="queue" num="01" id="none" style="width:60px;"><input type="checkbox" name="fvs" /></td>
+            <td attr="id" num="01" id="id" style="width:30px;" th:utext="${c.id}">用户编号</td>
+            <td attr="name" num="01" id="name" style="width:60px;" th:utext="${c.name}">用户名</td>
+            <td attr="name" num="01" id="name" style="width:60px;" th:utext="${c.registerTime}">注册时间</td>
+            <td attr="sex" num="01" id="sex" style="width:40px;" th:utext="${c.gender}">性别</td>
+            <td attr="age" num="01" id="birthday" style="width:50px" th:utext="${c.birthday}">生日</td>
+            <td attr="num" num="01" id="imei" style="width:100px" th:utext="${c.phone}">手机号</td>
+
+            <td style="width:70px;"><span th:onclick="'get_app_user_detail('+ ${c.id} + ');'">查看</span>
+                                    <!--<a href="#" th:href="@{/user_update.html(userId = ${c.id})}">修改</a>--></td>
+        </tr>
+    </table>
+</div>
+
+<!--修改用户信息-->
+<form action="#" th:action="@{/appUpdate_user.html}" th:object="${user}" id="appUpdate-user-form" method="post">
+<ul class="alert_box"
+    style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">用户名：<input type="text" class="name" name="name"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">年龄：<input type="text" class="age" name="age"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">注册时间：<input type="date" class="registerTime" name="registerTime"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">性别：
+        <select name="gender" style="width: 302px;">
+            <option value="男">男</option>
+            <option value="女">女</option>
+            <option value="保密">保密</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">生日：<input type="date" class="birthday" name="birthday"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">手机号：<input type="text" class="phone" name="phone"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">密码<input type="text" class="password" name="password"
+                                                                style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">头像<input type="text" class="avatar" name="avatar"
+                                                                style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">余额<input type="text" class="balance" name="balance"
+                                                                style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">上次登录时间<input type="date" class="lastLoginTime" name="lastLoginTime"
+                                                                    style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">上次登录IP<input type="text" class="lastLoginIp" name="lastLoginIp"
+                                                                    style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">登录次数<input type="text" class="loginCount" name="loginCount"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">个性签名<input type="text" class="sign" name="sign"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">自我介绍<input type="text" class="remark" name="remark"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">用户身高<input type="text" class="height" name="height"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">用户体重<input type="text" class="weight" name="weight"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">当前位置经度<input type="text" class="longitude" name="longitude"
+                                                                    style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">当前位置纬度<input type="text" class="latitude" name="latitude"
+                                                                    style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">奖励记录<input type="text" class="reward" name="reward"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">孝心指数<input type="text" class="reward" name="reward"
+                                                                  style="float:right;width:300px;"/></li>
+
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="返回"/>
+                                                              <input type="submit" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+</form>
+
+<!--用户信息-->
+<form action="#">
+    <ul class="app_user_detail_box"  style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+        <li><img src="#" id="detail_avatar" name="detail_avatar" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">用户名：<input type="text" class="name" name="name" style="float:right;width:300px;" id="detail_name" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">年龄：<input type="text" class="age" name="age" style="float:right;width:300px;" id="detail_age" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">注册时间：<input type="datetime" class="registerTime" name="registerTime" style="float:right;width:300px;" id="detail_registerTime" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">性别：
+            <select name="gender" style="width: 302px;" id="detail_gender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+                <option value="保密">保密</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">生日：<input type="date" class="birthday" name="birthday"
+                                                                     style="float:right;width:300px;" id="detail_birthday" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">手机号：<input type="text" class="phone" name="phone"
+                                                                      style="float:right;width:300px;" id="detail_phone"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">密码<input type="text" class="password" name="password"
+                                                                      style="float:right;width:300px;" id="detail_password"/></li>
+        <!--<li style="height:30px;margin:5px 0;padding:0 5px">头像<input type="text" class="avatar" name="avatar"
+                                                                         style="float:right;width:300px;"/></li>-->
+        <li style="height:30px;margin:5px 0;padding:0 5px">余额<input type="text" class="balance" name="balance"
+                                                                    style="float:right;width:300px;" id="detail_balance"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">上次登录时间<input type="datetime" class="lastLoginTime" name="lastLoginTime"
+                                                                    style="float:right;width:300px;" id="detail_lastLoginTime"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">上次登录IP<input type="text" class="lastLoginIp" name="lastLoginIp"
+                                                                        style="float:right;width:300px;" id="detail_lastLoginIp"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">登录次数<input type="text" class="loginCount" name="loginCount"
+                                                                        style="float:right;width:300px;" id="detail_loginCount" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">个性签名<input type="text" class="sign" name="sign"
+                                                                        style="float:right;width:300px;" id="detail_sign" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">自我介绍<input type="text" class="remark" name="remark"
+                                                                        style="float:right;width:300px;" id="detail_remark" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">用户身高<input type="text" class="height" name="height"
+                                                                      style="float:right;width:300px;" id="detail_height" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">用户体重<input type="text" class="weight" name="weight"
+                                                                      style="float:right;width:300px;" id="detail_weight" /></li>
+        <!--<li style="height:30px;margin:5px 0;padding:0 5px">当前位置经度<input type="text" class="longitude" name="longitude"
+                                                                      style="float:right;width:300px;" id="detail_longitude" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">当前位置纬度<input type="text" class="latitude" name="latitude"
+                                                                      style="float:right;width:300px;" id="detail_latitude" /></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">奖励记录<input type="text" class="reward" name="reward"
+                                                                      style="float:right;width:300px;" id="detail_reward" /></li>-->
+        <li style="height:30px;margin:5px 0;padding:0 5px">孝心指数<input type="text" class="filialScore" name="filialScore"
+                                                                      style="float:right;width:300px;" id="detail_filialScore" /></li>
+
+        <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                                  style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                                  value="返回" onclick ="location.href='app_user.html'" />
+            <!--<input type="button" name="Submit" value="返回" onclick ="location.href='app_user.html'"/>-->
+        </li>
+    </ul>
+</form>
+
+<div style="height:70px"></div>
+</body>
+</html>

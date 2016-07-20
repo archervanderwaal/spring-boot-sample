@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>步行</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/a_key_set.js"></script>
+    <script type="text/javascript" src="java_js/walk.js" th:src="@{/java_js/walk.js}"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <form action="#" th:action="@{/walk.html}">
+            <p><label for="searchName">姓名：</label><input type="text" name="name" id="searchName"/></p>
+            <p><label for="=searchImei">标识码：</label><input type="text" name="imei" id="=searchImei"/></p>
+            <div class="function">
+                <input type="submit" th:value="搜索" class="search"/>
+                <input type="reset" th:value="清空" class="empty"/>
+                <!--<div class="search">搜索</div>-->
+                <!--<div class="empty">清空</div>-->
+            </div>
+        </form>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><label for="cb"></label><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>标识码</th>
+            <th>电话</th>
+            <th>住址详情</th>
+            <th>当日总步数</th>
+            <th>当日总消耗</th>
+            <th>当日总里程</th>
+            <!--<th>实时数据</th>-->
+            <th>历史详情</th>
+            <!--<th>健康状态</th>-->
+        </tr>
+        <tr th:each="c:${plays}">
+            <td id="none" style="width:40px;"><input type="checkbox" name="fvs" title=""/></td>
+            <td id="name" style="width:70px;" th:text="${c.user.name}">梅长芳</td>
+            <td id="age" style="width:70px" th:text="${c.user.age}">23</td>
+            <td id="num" style="width:120px" th:text="${c.user.imei}">1234567890</td>
+            <td id="phone" style="width:120px" th:text="${c.user.phone}">12345678901</td>
+            <td id="site" style="width:200px;" th:text="${c.user.address}">朝阳区 高碑店村 二区54号</td>
+            <td id=" total_number_steps" style="width:100px;" th:text="${c.count}">100000</td>
+            <td id="total_consumption" style="width:100px;" th:text="${c.calories}">100kcal</td>
+            <td id="total_mileage" style="width:100px;" th:text="${c.distance}">6km</td>
+            <!--<td id="real_time" style="width:70px;">2km</td>-->
+            <td style="width:200px;"><a href="#" id="historical_details" onclick="show_history()">详情</a></td>
+            <td style="display: none"><input type="text" th:value="${c.userId}" id="userId" title="userId"/></td>
+            <!--<td id="state" style="width:50px;"><a href="#">开启</a><a href="#">关闭</a></td>-->
+        </tr>
+    </table>
+</div>
+<script>
+
+</script>
+
+<ul class="historical_details_box"
+    style="display: none;width:600px;height:160px;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">
+        <table border="" cellspacing="0" cellpadding="0" width="590" align="center" id="play_history">
+            <!--<tr>-->
+            <!--<th>时间</th>-->
+            <!--<th>距离</th>-->
+            <!--<th>消耗</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>2016-01-26 10:20:32</td>-->
+            <!--<td>3km</td>-->
+            <!--<td>100kcal</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>2016-01-26 10:20:32</td>-->
+            <!--<td>3km</td>-->
+            <!--<td>100kcal</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>2016-01-26 10:20:32</td>-->
+            <!--<td>3km</td>-->
+            <!--<td>100kcal</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>2016-01-26 10:20:32</td>-->
+            <!--<td>3km</td>-->
+            <!--<td>100kcal</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td colspan="3">-->
+            <!--<input type="button" class="btn"-->
+            <!--style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"-->
+            <!--value="确定"/>-->
+            <!--</td>-->
+            <!--</tr>-->
+        </table>
+    </li>
+    <!--<li style="height:30px;margin:5px 0;padding:0 5px"></li>-->
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select style=" width:3.5rem;margin:-36px 37rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

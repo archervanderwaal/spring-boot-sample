@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>心率测试</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/a_key_set.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <form action="#" th:action="@{/heart_rate_test.html}">
+            <p><label for="searchName">姓名：</label><input type="text" name="name" id="searchName"/></p>
+            <p><label for="=searchImei">标识码：</label><input type="text" name="imei" id="=searchImei"/></p>
+            <div class="function">
+                <input type="submit" th:value="搜索" class="search"/>
+                <input type="reset" th:value="清空" class="empty"/>
+                <!-- <div class="a_key_set" style="width: 70px;">一键设定</div> -->
+            </div>
+        </form>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>标识码</th>
+            <th>电话</th>
+            <th>住址详情</th>
+            <th>当前心率</th>
+            <th>病史</th>
+            <th>正常心跳范围</th>
+            <th>历史详情</th>
+            <!--<th>健康状态</th>-->
+            <!--<th>设定情况</th>-->
+        </tr>
+        <tr th:each="c:${heartRate}">
+            <td attr="queue" num="01" id="none" style="width:40px;"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" id="name" style="width:40px;" th:utext="${c.user.name}"></td>
+            <td attr="age" num="01" id="age" style="width:40px" th:utext="${c.user.age}">32</td>
+            <td attr="num" num="01" id="num" style="width:100px" th:utext="${c.user.imei}"></td>
+            <td attr="phone" num="01" id="phone" style="width:100px" th:utext="${c.user.phone}"></td>
+            <td attr="site" id="site" num="01" style="width:200px;" th:utext="${c.user.address}"></td>
+            <td attr="current_heart_rate" num="01" id="current_heart_rate" style="width:70px;" th:utext="${c.value}">
+                65次/分
+            </td>
+            <td attr="history" id="history" num="01" style="width:100px;" th:utext="${c.user.medical}">心脏病</td>
+            <td attr="range" num="01" id="range" style="width:90px;" th:utext="${c.value}">60～80次/分</td>
+            <td attr="historical_details" num="01" style="width:50px;"><a href="#"
+                                                                          th:href="@{/historical_details.html(userId = ${c.id})}">详情</a>
+            </td>     <!--  id="historical_details"  -->
+            <!--<td attr="state" num="01" id="state" style="width:50px;" th:text="${c.healthAnalysis}">正常</td>-->
+            <!--<td attr="state1" num="01" id="state1" style="width:50px;" th:if="${c.status == 0}">手动</td>-->
+            <!--<td attr="state1" num="01" id="state1" style="width:50px;" th:if="${c.status == 1}">自动</td>-->
+        </tr>
+    </table>
+</div>
+
+<ul class="a_key_set_box"
+    style="display: none;width:400px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">检测时间：
+        <select name="state" class="state" style="width: 300px;">
+            <option value="1">10分钟</option>
+            <option value="2">20分钟</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="checkbox" class="remind"
+                                                              style="float:right;width:280px;"/>提醒≤50~80≤提醒
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="checkbox" class="notice"
+                                                              style="float:right;width:300px;"/>自动通知家属
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px; height:30px; text-align: center; display:block; margin:0 auto; border-radius:10px; background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+
+<ul class="historical_details_box"
+    style="display: none;width:600px;height:800px;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">
+        <table border="" cellspacing="0" cellpadding="0" width="590" align="center">
+            <tr>
+                <th>次数</th>
+                <th>心率</th>
+                <th>时间</th>
+            </tr>
+            <tr th:each="c:${heartRate}">
+                <td>1</td>
+                <td th:utext="${c.value}"></td>
+                <td th:utext="${c.time}">2016-01-26 10:20:32</td>
+            </tr>
+            <!--<tr>-->
+            <!--<td>2</td>-->
+            <!--<td>65</td>-->
+            <!--<td>2016-01-26 10:20:32</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>13</td>-->
+            <!--<td>65</td>-->
+            <!--<td>2016-01-26 10:20:32</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>4</td>-->
+            <!--<td>65</td>-->
+            <!--<td>2016-01-26 10:20:32</td>-->
+            <!--</tr>-->
+            <tr>
+                <td colspan="3"><input type="button" class="btn"
+                                       style="width:100px; height:30px; text-align: center; display:block; margin:0 auto; border-radius:10px; background:#e3783b;"
+                                       value="确定"/></td>
+            </tr>
+        </table>
+    </li>
+    <!--<li style="height:30px;margin:5px 0;padding:0 5px"></li>-->
+</ul>
+<div class="page">
+    <ul>
+        <li th:value="${pages}" id="page"></li>
+        <span>
+            <li class="btn Btn"><input type="button" value="上一页" onclick="b()"/></li>
+        </span>
+        <li class="btn">10</li>
+        <span>
+            <li class="btn Btn"><input type="button" value="下一页" onclick="a()"/></li>
+        </span>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" id="jumpPage"
+                                             style="background:#eae3df; cursor:text; color:#000;" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" onclick="window.location.replace('/heart_rate_test.html?page=' + $('#jumpPage').val())"
+                   value="确定"/></li>
+        <li id="countPage">共<span>100</span>页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 37rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<script type="text/javascript">
+    function a() {
+        var num = document.getElementById("page").value;
+        num++;
+        window.location.replace('/heart_rate_test.html?page=' + num)
+    }
+    function b() {
+        var num = document.getElementById("page").value;
+        num--;
+        window.location.replace('/heart_rate_test.html?page=' + num)
+    }
+
+</script>
+<div style="height:50px"></div>
+</body>
+</html>

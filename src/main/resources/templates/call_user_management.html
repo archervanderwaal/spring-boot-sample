@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>呼叫用户管理</title>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <p>姓名：<input type="text"/></p>
+        <p>手机号：<input type="text"/></p>
+        <div class="function">
+            <div class="search">搜索</div>
+            <div class="empty">清空</div>
+            <div class="revise">修改</div>
+            <div class="increase">增加</div>
+            <div class="delete">删除</div>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>籍贯</th>
+            <th>身体状况</th>
+            <th>居住情况</th>
+            <th>求救电话</th>
+            <th>是否通畅</th>
+            <th>详情住址</th>
+            <th>到访人</th>
+            <th>到访日期</th>
+            <th>视频记录</th>
+            <th>备注</th>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" class="name" style="width:50px;">梅长芳</td>
+            <td attr="name" num="01" class="sex" style="width:50px;">女</td>
+            <td attr="" num="01" class="age" style="width:50px">32</td>
+            <td attr="" num="01" class="native place" style="width:70px">北京</td>
+            <td attr="name" num="01" class="physiclal_status" style="width:70px;">良好</td>
+            <td attr="" num="01" class="reside" style="width:100px; text-align:center;">与配偶子女同住</td>
+            <td attr="" num="01" class="sub" style="width:110px;">
+                <select name="healthy" class="healthy" style="background: #eae3df;border: none;width: 100%;">
+                    <option value="1">18910011818</option>
+                    <option value="2">18910011817</option>
+                </select>
+            </td>
+            <td attr="" num="01" class="smooth" style="width:110px;">通畅</td>
+            <td attr="" class="site" num="01" style="width:190px;">朝阳区 高碑店村 二区54号</td>
+            <td attr="" class="people_visit" num="01" style="width: 60px;">惠东海</td>
+            <td attr="" class="data" num="01" style="width: 85px;">2016-02-19</td>
+            <td attr="location" class="video" num="01" style="width: 85px;"><a href="http://pan.baidu.com/">上传</a></td>
+            <td attr="remarks" num="01" id="remarks" style="width:70px;">无</td>
+        </tr>
+    </table>
+</div>
+
+<ul class="alert_box"
+    style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text"
+                                                                                                           class="name"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+        <select name="sex" style="width: 304px;">
+            <option value="man">男</option>
+            <option value="woman">女</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：<input type="text"
+                                                                                                           class="age"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：<input type="text"
+                                                                                                           class="native_place"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">身体状况：
+        <select name="healthy" class="physiclal_status" style="width:304px;">
+            <option value="good">良好</option>
+            <option value="commonly">一般</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;况：
+        <select name="reside" class="reside" style="width: 304px;">
+            <option value="family">与配偶子女同住</option>
+            <option value="spouse">仅与配偶同住</option>
+            <option value="children">与子女同住</option>
+            <option value="empty_nest">空巢</option>
+        </select>
+    </li>
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">联系电话：
+        <select name="healthy" class="healthy" style="width: 304px;">
+            <option value="1">18910011818</option>
+            <option value="2">18910011817</option>
+        </select>
+    </li>
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">是否通畅：<input type="text" class="smooth"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">详情住址：<input type="text" class="site"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">到&nbsp;访&nbsp;&nbsp;人：<input type="text" class="people_visit"
+                                                                                    style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">到访日期：<input type="text" class="data"
+                                                                   style="float:right;width:300px;"/></li>
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">视频记录：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button><a href="http://pan.baidu.com/">上传</a></button>
+    </li>
+
+    <!--<li style="height:30px;margin:5px 0;padding:0 5px">视频记录：<input type="text" class="video"
+                                                                   style="float:right;width:300px;"/><a href="http://pan.baidu.com/">上传</a></li>-->
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：<input type="text"
+                                                                                                           class="remarks"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+
+<ul class="increase_box"
+    style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text"
+                                                                                                           class="name"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+        <select name="sex" style="width: 304px;">
+            <option value="man">男</option>
+            <option value="woman">女</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：<input type="text"
+                                                                                                           class="age"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：<input type="text"
+                                                                                                           class="native_place"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">身体状况：
+        <select name="healthy" class="physiclal_status" style="width:304px;">
+            <option value="good">良好</option>
+            <option value="commonly">一般</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;况：
+        <select name="reside" class="reside" style="width: 304px;">
+            <option value="family">与配偶子女同住</option>
+            <option value="spouse">仅与配偶同住</option>
+            <option value="children">与子女同住</option>
+            <option value="empty_nest">空巢</option>
+        </select>
+    </li>
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">联系电话：
+        <select name="healthy" class="healthy" style="width: 304px;">
+            <option value="1">18910011818</option>
+            <option value="2">18910011817</option>
+        </select>
+    </li>
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">是否通畅：<input type="text" class="smooth"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">详情住址：<input type="text" class="site"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">到&nbsp;访&nbsp;&nbsp;人：<input type="text" class="people_visit"
+                                                                                    style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">到访日期：<input type="text" class="data"
+                                                                   style="float:right;width:300px;"/></li>
+
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">视频记录：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button><a href="http://pan.baidu.com/">上传</a></button>
+    </li>
+
+    <!--<li style="height:30px;margin:5px 0;padding:0 5px">视频记录：<input type="text" class="video"
+                                                                   style="float:right;width:300px;"/><a href="http://pan.baidu.com/">上传</a></li>-->
+
+
+    <li style="height:30px;margin:5px 0;padding:0 5px">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：<input type="text"
+                                                                                                           class="remarks"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

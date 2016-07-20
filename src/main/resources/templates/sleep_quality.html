@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>睡眠质量</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="js/sleepQualitySeach.js" th:src="@{js/sleepQualitySeach.js}"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box" style="width:100%;">
+    <div class="about">
+        <form action="#" th:action="@{/sleep_quality.html}" method="post">
+            <p>姓名：<input type="text" id="seachName" name="name"/></p>
+            <p>标识码：<input type="text" id="imei" name="imei"/></p>
+            <div class="function">
+                <input type="submit" value="搜索" class="search"/>
+                <input type="reset" value="清空" class="empty"/>
+                <!--<div class="search" onclick="SleepSeach()">搜索</div>-->
+                <!--<div class="empty">清空</div>-->
+                <!--<div class="revise">修改</div>-->
+                <!--<div class="auto_on" style="width: 70px;">自动开启</div>-->
+            </div>
+        </form>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>姓名</th>
+            <th>标识码</th>
+            <th>日期</th>
+            <th>深度睡眠</th>
+            <th>浅度睡眠</th>
+            <th>睡眠时长</th>
+            <th>睡眠质量</th>
+            <!--            <th>记录人</th>
+                        <th>历史记录</th>
+                        <th>开启状态</th>-->
+        </tr>
+
+        <tr th:each="c:${sleeps}">
+            <td attr="name" num="01" class="name" style="width:60px;" th:utext="${c.user.name}">梅长芳</td>
+            <td attr="ims" num="01" class="num" style="width:100px" th:utext="${c.user.imei}">1234567890</td>
+            <td sttr="statisticalDate" num="01" class="data" style="width:180px;" th:utext="${c.statistical}">
+                2016-01-26 10:20:32
+            </td>
+            <td attr="sleepDeep" num="01" class="deep_sleep" style="width:100px" th:utext="${c.sleepDeep}">8:30:20</td>
+            <td attr="sleepLight" num="01" class="light_sleep" style="width:100px" th:utext="${c.sleepLight}">8:30:20
+            </td>
+            <td attr="sleepTime" num="01" class="sleep_duration" style="width:100px" th:utext="${c.sleepTime}">8:30:20
+            </td>
+            <td attr="num" num="01" style="width:40px;" th:if="${c.quality == 0}">较差</td>
+            <td attr="num" num="01" style="width:40px;" th:if="${c.quality == 1}">一般</td>
+            <td attr="num" num="01" style="width:40px;" th:if="${c.quality == 2}">良好</td>
+            <td attr="num" num="01" style="width:40px;" th:if="${c.quality == 3}">未知</td>
+            <!--            <td attr="" num="01" class="note_taker" style="width:60px" >惠东海</td>
+                        <td attr="" num="01" class="history" style="width:60px">惠东海</td>
+                        <td attr="num" num="01" style="width:40px;" th:if="${c.serviceStatus == 0}">未开通</td>
+                        <td attr="num" num="01" style="width:40px;" th:if="${c.serviceStatus == 1}">已开通</td>
+                        <td attr="num" num="01" style="width:40px;" th:if="${c.serviceStatus == 2}">冻结</td>-->
+        </tr>
+    </table>
+</div>
+
+<ul class="alert_box"
+    style="display: none;width:400px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">姓名：<input type="text" class="name"
+                                                                 style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">标识号：<input type="text" class="num"
+                                                                  style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">日期：<input type="text" class="data"
+                                                                 style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">深度睡眠：<input type="text" class="deep_sleep"
+                                                                   style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">浅度睡眠：<input type="text" class="light_sleep"
+                                                                   style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">睡眠时长：<input type="text" class="sleep_duration"
+                                                                   style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">睡眠质量：
+        <select name="sleep_quality" class="sleep_quality" style="width: 300px;" title="">
+            <option value="one">优</option>
+            <option value="two">良</option>
+            <option value="three">差</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">记录人：<input type="text" class="note_taker"
+                                                                  style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">历史记录：<input type="text" class="history"
+                                                                   style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">开启状态：<input type="text" class="open_state"
+                                                                   style="float:right;width:300px;" title=""/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px; height:30px; text-align: center; display:block; margin:0 auto; border-radius:10px; background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn" th:utext="${currNumber}">100</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn"
+                                             style="background:#eae3df; cursor:text; color:#000;" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')" title=""/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共</li>
+        <li class="btn" th:utext="${totalPages}">100</li>
+        <li>页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 37.5rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

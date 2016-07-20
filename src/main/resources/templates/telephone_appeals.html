@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>电话诉求体系统计</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="jQuery.js"></script>
+    <script type="text/javascript" src="jqplot.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            width: 304px;
+            height: 25px;
+            margin: 5px 100px 0 0;
+            border: 1px solid #aaa;
+            padding-left: 20px;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .sex {
+            width: 70px;
+            padding-left: 0px;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var data = [[1, 2, 3, 4, 5, 6/*,7,8,9*/], [3, 6, 8, 1, 11, 22/*,4,21,6*/]];
+            var data_max = 30; //Y轴最大刻度
+            var line_title = ["失败", "成功"]; //曲线名称
+            var y_label = "次数"; //Y轴标题
+            var x_label = "分类"; //X轴标题
+            var x = ["紧急救助", "误按", "测试", "公共服务", "公益服务", "便民服务"/*,7,8,9*/]; //定义X轴刻度值
+            var title = "电话诉求体系统计"; //统计图标标题
+            j.jqplot.diagram.base("chart2", data, line_title, "电话诉求体系统计", x, x_label, y_label, data_max, 2);
+        });
+    </script>
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <div class="about" style="border-bottom:1px solid #e3783b">
+        <p>姓名：<input type="text"/></p>
+        <p>性别：<input type="text"/></p>
+        <p>呼叫时间：<input type="text"/> 至 <input type="text"/></p>
+        <div class="function">
+            <button class="search">添加</button>
+            <button class="empty">删除</button>
+            <button class="revise">修改</button>
+        </div>
+    </div>
+
+</div>
+<div id="chart2"></div>
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>角色管理</title>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <style type="text/css">
+        select {
+            float: right;
+            width: 304px;
+            height: 25px;
+            margin: 5px 100px 0 0;
+            border: 1px solid #aaa;
+            padding-left: 20px;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .sex {
+            width: 70px;
+            padding-left: 0px;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <div class="about">
+        <p>姓名：<input type="text"></p>
+        <div class="function">
+            <div class="search">搜索</div>
+            <div class="increase">增加</div>
+            <div class="delete">删除</div>
+            <div class="revise">修改</div>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>所属级别</th>
+            <th>描述</th>
+            <th>分配权限</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">1</td>
+            <td attr="name" num="01" class="name" style="width:70px;">梅长芳</td>
+            <td attr="" num="01" class="none" style="width:100px;">
+                <select name="sex" class="sex">
+                    <option value="gly">管理员</option>
+                    <option value="zx">坐席</option>
+                    <option value="fws">服务商</option>
+                    <option value="wyh">调度</option>
+                    <option value="wyh">志愿者</option>
+                    <option value="wyh">饮食专家</option>
+                    <option value="wyh">监察</option>
+                    <option value="wyh">投诉部</option>
+                </select></td>
+            <td attr="" num="01" class="none" style="width:200px">管理员拥有所有权限</td>
+            <td attr="location" class="site" num="01" style="width:200px;">管理员</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')">&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 39rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

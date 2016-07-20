@@ -1,0 +1,46 @@
+#global {
+    width: 30%;
+    text-align: left;
+    border: 1px solid #dedede;
+    background: #efefef;
+    padding: 20px;
+    margin: 100px auto;
+}
+
+fieldset {
+    width: 30%;
+    margin: 0px auto;
+}
+
+form {
+    font: 100% verdana;
+    min-width: 300px;
+    max-width: 400px;
+    width: 350px;
+}
+
+form fieldset {
+    border-color: #bdbebf;
+    border-width: 3px;
+    margin: 0;
+}
+
+legend {
+    font-size: 1.3em;
+}
+
+form label {
+    width: 120px;
+    display: block;
+    float: left;
+    text-align: right;
+    padding: 2px;
+}
+
+#buttons {
+    text-align: center;
+}
+
+#errors, li {
+    color: red;
+}

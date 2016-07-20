@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"-->
+<!--xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>API</title>
+    <link rel="stylesheet" href="css/bootstrap.css"
+          th:href="@{css/bootstrap.css}"/>
+</head>
+<body>
+<div class="container">
+    <h5 align="right" style="color: red">*此处所有接口默认采用POST访问方式</h5>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>URL</th>
+            <th>功能</th>
+            <th>参数</th>
+            <!--<th>返回值</th>-->
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="f:${list}">
+            <td th:text="${f.url}">/api</td>
+            <td th:text="${f.desc}">接口列表</td>
+            <td>
+                <p th:each="p:${f.params}">
+                    <span th:text="${p.name}"></span>
+                    <span th:text="${p.desc}"></span>
+                </p>
+            </td>
+            <!--<td>-->
+            <!--<p th:each="r:${f.returns}">-->
+            <!--<span th:text="${r.name}"></span>-->
+            <!--<span th:text="${r.desc}"></span>-->
+            <!--</p>-->
+            <!--</td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

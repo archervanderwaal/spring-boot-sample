@@ -1,0 +1,590 @@
+table tr td.over:before {
+    content: "√";
+    float: left;
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    left: 27%;
+    color: green;
+}
+
+table tr td.tst {
+    width: 300px;
+}
+
+table tr td.tst span {
+    display: block;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+}
+
+table tr td.check ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: none;
+    border-top: 1px dashed orange;
+}
+
+table tr td.check ul li {
+    float: left;
+    width: 24%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-right: 1px dashed orange;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+}
+
+table tr td.check ul li:nth-last-child(1) {
+    border: none;
+}
+
+table tr td.check ul li.active:before {
+    content: "√";
+    color: green;
+    position: absolute;
+    left: 16%;
+}
+
+div.reset_box {
+    width: 800px;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+    position: fixed;
+    z-index: 5;
+    top: 100px;
+    left: 50%;
+    margin-left: -400px;
+    border: 1px solid orange;
+    background: #fff;
+    padding-top: 10px;
+    display: none;
+}
+
+div.reset_box textarea {
+    resize: none;
+    font-size: 18px;
+    text-indent: 2em;
+    padding: 5px;
+    display: block !important;
+    width: 90%;
+    margin: 0 auto !important;
+    outline: none;
+}
+
+div.reset_box input {
+    float: Left;
+    width: 130px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin-left: 23%;
+}
+
+/*  病历  */
+.medical_record {
+    width: 480px !important;
+    height: 330px;
+    overflow: hidden;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: -250px;
+    background: #fff;
+    border: 1px solid orange;
+    display: none;
+    box-shadow: 0 0 10px orange;
+    border-radius: 8px;
+}
+
+.medical_record h3 {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    background: #E3783B;
+    text-align: center;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.medical_record li {
+    width: 100%;
+    overflow: hidden;
+    margin: 0px;
+    text-align: center;
+}
+
+.medical_record li textarea {
+    width: 90%;
+    height: 85%;
+    resize: none;
+    border: none;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.medical_record li input {
+    width: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 0px;
+    font-size: 20px;
+    color: #FFF;
+    display: block;
+    background: #147CAC;
+}
+
+.medical_record .no {
+    float: left;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.medical_record .no input {
+    margin-left: 70px;
+}
+
+.medical_record .yes {
+    float: right;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.medical_record .yes input {
+    margin-left: 80px;
+    background: #F22E49;
+}
+
+.medical_record li span {
+    float: right;
+    width: 420px;
+    min-height: 35px;
+}
+
+.medical_record li input[type='text'] {
+    float: right;
+    width: 300px;
+    margin: 5px 100px 0 0;
+}
+
+.medical_record li input[type='button'] {
+    display: block;
+    margin: 10px auto;
+}
+
+/*  家庭住址  */
+.location {
+    width: 480px !important;
+    height: 330px;
+    overflow: hidden;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: -250px;
+    background: #fff;
+    border: 1px solid orange;
+    display: none;
+    box-shadow: 0 0 10px orange;
+    border-radius: 8px;
+}
+
+.location h3 {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    background: #E3783B;
+    text-align: center;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.location li {
+    width: 100%;
+    overflow: hidden;
+    margin: 0px 0px -12px;
+    text-align: center;
+}
+
+.location li textarea {
+    width: 90%;
+    height: 85%;
+    resize: none;
+    border: none;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.location li input {
+    width: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 0px;
+    font-size: 20px;
+    color: #FFF;
+    display: block;
+    background: #147CAC;
+}
+
+.location .no {
+    float: left;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.location .no input {
+    margin-left: 70px;
+}
+
+.location .yes {
+    float: right;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.location .yes input {
+    margin-left: 80px;
+    background: #F22E49;
+}
+
+.location li span {
+    float: right;
+    width: 420px;
+    min-height: 35px;
+}
+
+.location li input[type='text'] {
+    float: right;
+    width: 300px;
+    margin: 5px 100px 0 0;
+}
+
+.location li input[type='button'] {
+    display: block;
+    margin: 10px auto;
+}
+
+/*  救助视频  */
+.save_video {
+    width: 480px !important;
+    height: 330px;
+    overflow: hidden;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: -250px;
+    background: #fff;
+    border: 1px solid orange;
+    display: none;
+    box-shadow: 0 0 10px orange;
+    border-radius: 8px;
+}
+
+.save_video h3 {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    background: #E3783B;
+    text-align: center;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.save_video li {
+    width: 100%;
+    overflow: hidden;
+    margin: 0px;
+    text-align: center;
+}
+
+.save_video li textarea {
+    width: 90%;
+    height: 85%;
+    resize: none;
+    border: none;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.save_video li input {
+    width: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 0px;
+    font-size: 20px;
+    color: #FFF;
+    display: block;
+    background: #147CAC;
+}
+
+.save_video .no {
+    float: left;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.save_video .no input {
+    margin-left: 70px;
+}
+
+.save_video .yes {
+    float: right;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.save_video .yes input {
+    margin-left: 80px;
+    background: #F22E49;
+}
+
+.save_video li span {
+    float: right;
+    width: 420px;
+    min-height: 35px;
+}
+
+.save_video li input[type='text'] {
+    float: right;
+    width: 300px;
+    margin: 5px 100px 0 0;
+}
+
+.save_video li input[type='button'] {
+    display: block;
+    margin: 10px auto;
+}
+
+/*  救助内容  */
+.rescue_content {
+    width: 480px !important;
+    height: 330px;
+    overflow: hidden;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: -250px;
+    background: #fff;
+    border: 1px solid orange;
+    display: none;
+    box-shadow: 0 0 10px orange;
+    border-radius: 8px;
+}
+
+.rescue_content h3 {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    background: #E3783B;
+    text-align: center;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.rescue_content li {
+    width: 100%;
+    overflow: hidden;
+    margin: 0px;
+    text-align: center;
+}
+
+.rescue_content li textarea {
+    width: 90%;
+    height: 85%;
+    resize: none;
+    border: none;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.rescue_content li input {
+    width: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 0px;
+    font-size: 20px;
+    color: #FFF;
+    display: block;
+    background: #147CAC;
+}
+
+.rescue_content .no {
+    float: left;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.rescue_content .no input {
+    margin-left: 70px;
+}
+
+.rescue_content .yes {
+    float: right;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.rescue_content .yes input {
+    margin-left: 80px;
+    background: #F22E49;
+}
+
+.rescue_content li span {
+    float: right;
+    width: 420px;
+    min-height: 35px;
+}
+
+.rescue_content li input[type='text'] {
+    float: right;
+    width: 300px;
+    margin: 5px 100px 0 0;
+}
+
+.rescue_content li input[type='button'] {
+    display: block;
+    margin: 10px auto;
+}
+
+/*  救援物资消耗  */
+.rescue_material {
+    width: 480px !important;
+    height: 330px;
+    overflow: hidden;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: -250px;
+    background: #fff;
+    border: 1px solid orange;
+    display: none;
+    box-shadow: 0 0 10px orange;
+    border-radius: 8px;
+}
+
+.rescue_material h3 {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    background: #E3783B;
+    text-align: center;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.rescue_material li {
+    width: 100%;
+    overflow: hidden;
+    margin: 0px 0px -12px;
+    text-align: center;
+}
+
+.rescue_material li textarea {
+    width: 90%;
+    height: 85%;
+    resize: none;
+    border: none;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.rescue_material li input {
+    width: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 0px;
+    font-size: 20px;
+    color: #FFF;
+    display: block;
+    background: #147CAC;
+}
+
+.rescue_material .no {
+    float: left;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.rescue_material .no input {
+    margin-left: 70px;
+}
+
+.rescue_material .yes {
+    float: right;
+    width: 50%;
+    height: auto;
+    line-height: 20px;
+}
+
+.rescue_material .yes input {
+    margin-left: 80px;
+    background: #F22E49;
+}
+
+.rescue_material li span {
+    float: right;
+    width: 420px;
+    min-height: 35px;
+}
+
+.rescue_material li input[type='text'] {
+    float: right;
+    width: 300px;
+    margin: 5px 100px 0 0;
+}
+
+.rescue_material li input[type='button'] {
+    display: block;
+    margin: 10px auto;
+}
+
+.alert_box5 {
+    width: 400px;
+    height: auto;
+    overflow: hidden;
+    position: fixed;
+    background: #fff;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+}
+
+.alert_box5 li {
+    padding-left: 10px;
+}
+
+.alert_box5 li input {
+    width: 100px;
+    margin-right: 5px;
+}
+
+.alert_box5 .li03 {
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+.alert_box5 .li03 button {
+    margin-left: 8px;
+}

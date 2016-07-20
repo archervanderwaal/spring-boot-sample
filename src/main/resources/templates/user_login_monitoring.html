@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>用户登录监控</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="java_js/user_login_monitoring.js"
+            th:src="@{/java_js/user_login_monitoring.js}"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            width: 304px;
+            height: 25px;
+            margin: 5px 100px 0 0;
+            border: 1px solid #aaa;
+            padding-left: 20px;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .sex {
+            width: 70px;
+            padding-left: 0px;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<form action="#" th:action="@{/user_login_monitoring.html}">
+    <div class="box" style="width : auto;">
+        <div class="about">
+            <p><label for="name">账户：</label><input type="text" id="name" name="name"/></p>
+            <div class="function">
+                <input type="submit" value="搜索" class="search" th:value="搜索" th:class="search"/>
+                <!--<div class="search">搜索</div>-->
+                <!--<div class="empty">删除</div>-->
+                <!--<div class="revise">修改</div>-->
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>编号</th>
+                <th>账户</th>
+                <th>登陆IP</th>
+                <th>登录时间</th>
+                <th>登录次数</th>
+                <th></th>
+            </tr>
+            <tr th:each="c:${admins}">
+                <td class="none" style="width:40px;">1</td>
+                <td class="name" style="width:150px;" th:text="${c.name}">jwduwqid</td>
+                <td class="none" style="width:200px" th:text="${c.lastLoginIP}">192.168.121.116</td>
+                <td class="none" style="width:200px" th:text="${c.lastLoginTime}">
+                    2016-01-29 16:11:11
+                </td>
+                <td class="site" style="width:100px;" th:text="${c.loginCount}">5次</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="page">
+        <ul>
+            <li class="btn Btn" th:if="${admins.hasPrevious()}"><input type="button" value="上一页"/></li>
+            <li class="btn">
+                <select name="size" id="size" style="width: 80px; margin-top: 12px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </li>
+            <li class="btn Btn" th:if="${admins.hasNext()}"><input type="button" value="下一页"/></li>
+            <li class="btn">到第&nbsp;&nbsp;
+                <input type="text" id="page" name="page" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                       maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+            </li>
+            <li><input type="submit" value="确定"/></li>
+            <li>共<span th:text="${admins.totalPages}">100</span>页</li>
+        </ul>
+        <select class="select" style=" width:3.5rem;margin:-36px 40rem 0 0; float: right; padding-left:12px;">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+        </select>
+    </div>
+</form>
+<div style="height:70px"></div>
+</body>
+</html>

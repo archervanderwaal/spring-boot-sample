@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+body, input, p, form, h1, h2, h3, h4, h5, h6, ul, ol, li, dt, dd {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font: 14px/1.5 "Microsoft YaHei", "宋体";
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background: #eae3df;
+}
+
+/*index页面*/
+div.container ul li {
+    padding-left: 5px;
+    cursor: pointer
+}
+
+div.container ul li.xl {
+    margin-left: -12px;
+}
+
+div.container ul li.xl ul li {
+    padding-left: 5px;
+    /*cursor: pointermargin-left: -12px;*/
+}
+
+div.container div#tishi {
+    width: 100%;
+    height: 284px;
+    padding-top: 150px;
+    text-align: center;
+    color: #e3783b;
+    font-size: 40px;
+    display: block
+}
+
+.from {
+    width: 400px;
+    height: auto;
+    overflow: hidden;
+    position: fixed;
+    background: #fff;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+}
+
+.from li {
+    height: 20px;
+    margin: 5px 0;
+    padding: 0 5px;
+}
+
+.from li .span-1 {
+    width: 89px;
+    display: block;
+    float: left;
+    text-align: right;
+}
+
+.from li .span-2 {
+    padding-left: 10px;
+}
+
+.page select .select {
+    width: 3.5rem;
+    margin: -36px 40rem 0 0;
+    float: right;
+    padding-left: 12px;
+}

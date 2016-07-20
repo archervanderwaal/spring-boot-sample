@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>增加诉求</title>
+    <link rel="stylesheet" href="css/listview.css" th:src="@{/css/listview.css}"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="js/increase.js"></script>
+    <script type="text/javascript" src="java_js/rescue_detail.js" th:src="@{java_js/rescue_detail.js}"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<form action="#" th:action="@{/rescue_details.html}">
+    <div class="box">
+        <div class="about">
+            <p><label for="searchName">姓名：</label><input type="text" name="name" id="searchName"/></p>
+            <p><label for="searchPhone">手机号：</label><input type="text" name="phone" id="searchPhone"/></p>
+            <div class="function">
+                <input type="submit" value="搜索" class="search" title="search"/>
+                <input type="reset" value="清空" class="empty" title="empty"/>
+                <input type="hidden" name="options" id="options"/>
+                <!--<input type="button" value="修改" class="revise" title="revise"/>-->
+                <!--<input type="button" value="增加" class="increase" title="increase">-->
+                <!--<div class="search">搜索</div>-->
+                <!--<div class="empty">清空</div>-->
+                <!--<div class="revise">修改</div>-->
+                <div class="increase">增加</div>
+                <!--<div class="delete">删除</div>-->
+                <div class="start_alarm" style="width: 70px;">启动警报</div>
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th><input type="checkbox" name="cb" id="cb" onclick="fx()" title=""/></th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>手机号</th>
+                <th>紧急联系人</th>
+                <th>紧急联系人电话</th>
+                <th>地址</th>
+                <th>诉求时间</th>
+                <th>诉求内容</th>
+                <th>诉求状态</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="c:${appeals}">
+                <td id="none" style="width:40px;">
+                    <input type="checkbox" name="fvs" id="fvs" title=""/>
+                </td>
+                <td id="name" style="width:50px;" th:text="${c.name}">梅长芳</td>
+                <td id="female" style="width:50px;" th:if="${c.gender}">女</td>
+                <!--<td id="male" style="width:50px;" th:if="${c.gender == 1}">男</td>-->
+                <td id="age" style="width:50px" th:text="${c.age}">32</td>
+                <td id="phone" style="width:100px" th:text="${c.phone}">12345678901</td>
+                <td id="contacts" style="width:80px;cursor:pointer" th:utext="${c.contactName}">张三</td>
+                <td id="contact_phone" style="width:110px;" th:utext="${c.contactPhone}">18910011818</td>
+                <td style="width:200px;" th:text="${c.address}">朝阳区 高碑店村 二区54号</td>
+                <td id="data" style="width:150px;" th:text="${c.startTime}">2016-01-26 10:20:32</td>
+                <td id="appeal_content" th:text="${c.content}"></td>
+                <td id="demands_state0" style="width:60px; text-align:center;" th:if="${c.status}">未处理</td>
+                <td id="demands_state1" style="width:60px; text-align:center;" th:if="${!c.status}">已处理</td>
+                <td id="option" style="width:60px; text-align:center;">
+                    <input type="button" value="完成" th:onclick="'javascript:update_appeal_status(' + ${c.id} + ')'"/>
+                </td>
+            </tr>
+        </table>
+
+        <form action="#" th:action="@{/save_post.html}" method="post">
+            <ul class="alert_box2"
+                style="display: none;width:400px;height:auto;overflow: hidden;position:fixed;background:#eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px; padding-bottom: 10px;">
+                <li><input type="hidden" id="uId"/></li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">标识号：<input type="text" class="num"
+                                                                              id="addWatchImei"
+                                                                              onchange="getAppealInfo($(this).val());"
+                                                                              style="float:right; width:300px;"/>
+                </li>
+                <li><input type="hidden" th:id="userId" th:name="userId"/></li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">姓名：<input readonly="readonly" type="text"
+                                                                             class="name"
+                                                                             id="addName" name="addName"
+                                                                             style="float:right; width:300px;"/>
+                </li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">性别：
+                    <select readonly="readonly" name="gender" style="width: 300px;" id="addGender">
+                        <option id="sex1" value="1">男</option>
+                        <option id="sex2" value="0">女</option>
+                    </select>
+                </li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">年龄：<input readonly="readonly" type="text"
+                                                                             class="age"
+                                                                             id="addAge"
+                                                                             style="float:right; width:300px;"/>
+                </li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">手机号：<input readonly="readonly" type="text"
+                                                                              class="phone"
+                                                                              id="addPhone"
+                                                                              style="float:right; width:300px;"/>
+                </li>
+                <!--<li style="height:30px;margin:5px 0;padding:0 5px">紧急联系人：<input type="text" class="contacts"
+                                                                                id="addContactsName"
+                                                                                style="float:right; width:300px;"/></li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">紧急联系人电话：<input type="text" class="contacts_phone"
+                                                                                  id="addContactsPhone"
+                                                                                  style="float:right; width:270px;"/></li>-->
+                <li style="height:30px;margin:5px 0;padding:0 5px">诉求状态：
+                    <select name="status" th:name="status" class="demands_state" style="width: 300px;" id="status">
+                        <option value="0">未处理</option>
+                        <option value="1">处理</option>
+                    </select>
+                </li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">地址：<input type="text" class="site"
+                                                                             id="address" th:name="address"
+                                                                             style="float:right; width:300px;"/>
+                </li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">内容：
+                    <select id="addContent" th:name="content" name="appeal_content"
+                            class="appeal_content"
+                            style="width: 300px;" title="">
+                        <option value="1">紧急情况</option>
+                        <option value="2">否</option>
+                    </select>
+                    <input type="text" id="content" th:id="content" th:name="content" name="content"
+                           class="appeal_content1"
+                           style="float:right; width:300px;"/>
+                </li>
+                <li style="height:30px;margin:5px 0;padding:0 5px">
+                    <input type="button" onclick="saveAppealInfo()" class="btn"
+                           style="width:100px; height:30px; text-align: center; display:block; margin:0 auto; border-radius:10px; background:#e3783b;"
+                           value="确定"/>
+                </li>
+            </ul>
+        </form>
+        <div class="page">
+            <ul>
+                <li class="btn Btn" th:if="${appeals.hasPrevious()}"><input type="button" value="上一页"/></li>
+                <li class="btn">
+                    <select name="size" id="size" style="width: 80px; margin-top: 12px;">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="5">5</option>
+                        <option value="10" th:selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </li>
+                <li class="btn Btn" th:if="${appeals.hasNext()}"><input type="button" value="下一页"/></li>
+                <li class="btn">到第&nbsp;&nbsp;
+                    <input type="text" id="page" name="page" class="Btn"
+                           style="background:#eae3df;cursor:text;color:#000;"
+                           maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+                </li>
+                <li><input type="submit" value="确定" onsubmit="$('#options').val('show')"/></li>
+                <li>共<span th:text="${appeals.totalPages}">100</span>页</li>
+            </ul>
+            <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+                <option>10</option>
+                <option>20</option>
+                <option>30</option>
+                <option>40</option>
+                <option>50</option>
+            </select>
+        </div>
+    </div>
+</form>
+<div style="height:70px"></div>
+</body>
+</html>

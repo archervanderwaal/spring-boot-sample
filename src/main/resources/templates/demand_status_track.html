@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>诉求状态跟踪</title>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/achieve.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+
+        .star {
+            float: left;
+        }
+
+        .star li {
+            float: left;
+            height: 18px;
+            width: 17px;
+            background: url("images/40huise.png") no-repeat;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+<form action="#" th:action="@{/rescue_details1.html}" method="post">
+    <div class="box" style="width:auto;">
+        <div class="about">
+            <p>诉求人：<input id="name" name="name" type="text"/></p>
+            <p>手机号：<input id="phone" name="phone" type="text"/></p>
+            <div class="function">
+                <input type="submit" class="search" value="搜索"/>
+                <div class="achieve">完成</div>
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th><input type="checkbox" name="cb" id="cb" onclick="fx()"/></th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>标识号</th>
+                <th>手机号</th>
+                <th>救援人员工号</th>
+                <th>诉求时间</th>
+                <th>返回时间</th>
+                <th>救助视频</th>
+                <th>诉求内容</th>
+                <th>救援物资消耗</th>
+                <th>客服</th>
+                <th>调度</th>
+                <th>站长</th>
+                <th>状态跟踪</th>
+                <th>回访</th>
+                <th>回访人</th>
+            </tr>
+            <tr class="tr-03" th:each="c:${demandInfo}">
+                <td attr="queue" num="01" id="none" style="width:40px;"><input type="checkbox" name="fvs" id="fvs"/>
+                </td>
+                <td attr="name" num="01" class="name" style="width:50px;" th:utext="${c.name}">梅长芳</td>
+                <td attr="name" num="01" class="sex" style="width:40px;" th:utext="${c.gender}"></td>
+                <td attr="" num="01" class="age" style="width:50px" th:utext="${c.age}">32</td>
+                <td attr="" num="01" class="num" style="width:90px" th:utext="${c.imei}">1234567890</td>
+                <td attr="" num="01" class="phone" style="width:90px" th:utext="${c.phone}">12345678901</td>
+                <td attr="" num="01" class="num1" style="width:90px" th:utext="${c.helpId}">1234567890</td>
+                <td sttr="" num="01" class="data" style="width:130px;"
+                    th:utext="${c.startTime}"><input type="text" name="time" id="time1"
+                                                     value="2016-01-26 10:20:32"
+                                                     style="width:100%;background: #eae3df;border: none;"/>
+                </td>
+                <td sttr="" num="01" class="data" style="width:130px;" th:utext="${c.endTime}">
+                    <input type="text" name="time" id="time2"
+                           value="2016-01-26 10:20:32"
+                           style="width:100%;background: #eae3df;border: none;"/>
+                </td>
+                <td attr="location" class="video" num="01" style="width:70px;" th:utext="${c.videoUrl}">未上传</td>
+                <td attr="location" class="content" num="01" style="width:150px;" th:utext="${c.content}"><input
+                        type="text"
+                        name="content"
+                        id="content" value="测心率，测血压"
+                        style="width: 100%;background: #eae3df;border: none;"/>
+                </td>
+                <td attr="location" class="material" num="01" style="width:150px;" th:utext="${c.consume}"><input
+                        type="text" name="content"
+                        id="content" value="测心率，测血压"
+                        style="width: 100%;background: #eae3df;border: none;"/>
+                </td>
+                <td attr="" num="01" class="note_taker" style="width:50px;" th:utext="${c.service}">惠东海</td>
+                <td attr="" num="01" class="note_taker" style="width:50px;" th:utext="${c.control}">惠东海</td>
+                <td attr="" num="01" class="note_taker" style="width:50px;" th:utext="${c.master}">惠东海</td>
+                <td attr="" num="01" id="return_visit" style="width:80px;" th:if="${c.return}">惠东海</td>
+                <td attr="name" num="01" id="state" style="width:80px;" th:if="${c.status == 0}">未处理</td>
+                <td attr="name" num="01" id="state" style="width:80px;" th:if="${c.status == 1}">已处理</td>
+                <td attr="" num="01" id="visit" style="width:80px;" th:if="${c.isReturn == 0}">未回访</td>
+                <td attr="" num="01" id="visit" style="width:80px;" th:if="${c.isReturn == 1}">未回访</td>
+            </tr>
+        </table>
+    </div>
+
+    <ul class="achieve_box"
+        style="display: none;width:400px;height:auto;overflow: hidden;position:fixed;background:    eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px; padding-bottom: 10px;">
+        <li style="height:30px;margin:5px 0;padding:0 5px">状态跟踪：
+            <select name="state" class="state" style="width: 300px;float: right;">
+                <option value="yes">完成</option>
+                <option value="no">未完成</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">回&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;访：
+            <select name="visit" class="visit" style="width: 300px;float: right;">
+                <option value="yes">已回访</option>
+                <option value="no">未回访</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                                  style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                                  value="确定"/></li>
+    </ul>
+
+    <div class="page">
+        <ul>
+            <li class="btn Btn" th:if="${demandInfo.hasPrevious()}"><input type="button" value="上一页"/></li>
+            <li class="btn">
+                <select name="size" id="size" style="width: 80px; margin-top: 12px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="10" selected="selected">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </li>
+            <li class="btn Btn" th:if="${demandInfo.hasNext()}"><input type="button" value="下一页"/></li>
+            <li class="btn">到第&nbsp;&nbsp;
+                <input type="text" id="page" name="page" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                       maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+            </li>
+            <li><input type="submit" value="确定"/></li>
+            <li>共<span th:text="${demandInfo.totalPages}">100</span>页</li>
+        </ul>
+        <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+        </select>
+    </div>
+</form>
+</body>
+</html>

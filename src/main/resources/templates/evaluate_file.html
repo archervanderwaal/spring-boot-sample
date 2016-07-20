@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>评价存档</title>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/evaluate_file.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <div class="about">
+        <form action="#" th:action="@{/evaluate_file.html}" method="get">
+            <p><label for="id">工号：</label><input type="text" name="id" id="id"/></p>
+            <!--<p><label for="name">姓名：</label><input type="text" name="name" id="name"/></p>-->
+            <!--<p><label for="=phone">手机号：</label><input type="text" name="phone" id="=phone"/></p>-->
+            <div class="function">
+                <input type="submit" th:value="搜索" class="search"/>
+                <input type="reset" th:value="清空" class="empty"/>
+                <input type="button" th:value="修改" class="revise"/>
+                <input type="button" th:value="增加" class="increase"/>
+                <!--<button class="delete">删除</button>-->
+            </div>
+        </form>
+
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>工号</th>
+            <th>姓名</th>
+            <th>部门</th>
+            <th>服务内容</th>
+            <th>投诉</th>
+            <!--<th>评价</th>-->
+            <!--<th>投诉累计</th>-->
+            <th>状态</th>
+        </tr>
+        <tr th:each="c:${complaints}">
+            <td id="none" style="width:40px;"><input type="checkbox" name="fvs"/></td>
+            <td id="id" style="width:150px" th:utext="${c.empNo}">1234567890</td>
+            <td id="name" style="width:100px;" th:utext="${c.empName}">张三</td>
+            <td id="dept" th:text="${c.deptName}">客服</td>
+            <td id="" style="width:200px">服务内容</td>
+            <td id="" style="width:200px;" th:text="${c.content}">投诉内容</td>
+            <!--<td id="" style="width:200px" >评价</td>-->
+            <!--<td id="" style="width:200px" >6</td>-->
+            <td id="" style="width:200px" th:utext="${c.status}">未处理</td>
+        </tr>
+    </table>
+</div>
+
+<ul class="revise_box"
+    style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background:#eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px; padding-bottom: 10px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text"
+                                                                                                           class="name"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text"
+                                                                                                           class="num"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;门：<input type="text"
+                                                                                                           class="sex"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">服务内容：<input type="text" class="age"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">投&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;诉：<input type="text"
+                                                                                                           class="phone"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">评&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<input type="text"
+                                                                                                           class="contacts"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">诉求状态：
+        <select name="state" class="state" style="width: 304px;">
+            <option value="yes">未处理</option>
+            <option value="no">处理</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">投诉累计：<input type="text" class="contacts_phone"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+
+<ul class="increase_box"
+    style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background:#eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px; padding-bottom: 10px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text"
+                                                                                                           class="name"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text"
+                                                                                                           class="num"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;门：<input
+            type="department" class="department" style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">服务内容：<input type="text" class="age"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">投&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;诉：<input type="text"
+                                                                                                           class="phone"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">评&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<input type="text"
+                                                                                                           class="contacts"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">诉求状态：
+        <select name="state" class="state" style="width: 304px;">
+            <option value="yes">未处理</option>
+            <option value="no">处理</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">投诉累计：<input type="text" class="contacts_phone"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn"
+                                             style="background:#eae3df; cursor:text; color:#000;" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

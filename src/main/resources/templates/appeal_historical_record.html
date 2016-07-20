@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>订单历史记录</title>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            padding-left: 18px;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .sex {
+            width: 70px;
+            padding-left: 0px;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<form action="#" th:action="@{/appeal_historical_record.html}" method="post">
+    <div class="box">
+        <div class="about">
+            <p>姓名：<input id="name" name="name" type="text"/></p>
+            <p>手机号：<input id="phone" name="phone" type="text"/></p>
+            <p>工号：<input id="empId" name="empId" type="text"/></p>
+            <div class="function">
+                <input class="search" type="submit" value="搜索"/>
+                <input class="empty" type="reset" value="清空"/>
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>标识号</th>
+                <th>手机号</th>
+                <th>救援人员工号</th>
+                <th>诉求时间</th>
+                <th>返回时间</th>
+                <th>救助视频</th>
+                <th>诉求内容</th>
+                <th>救援物资消耗</th>
+                <th>客服</th>
+                <th>调度</th>
+                <th>站长</th>
+                <th>回访人</th>
+                <th>诉求状态</th>
+                <th>状态跟踪</th>
+            </tr>
+            <tr th:each="c:${appeals}">
+                <td attr="queue" num="01" id="none" style="width:60px;"><input type="checkbox" name="fvs"/></td>
+                <td attr="name" num="01" class="name" style="width:50px;" th:utext="${c.name}">梅长芳</td>
+                <td attr="name" num="01" class="sex" style="width:40px;" th:utext="${c.gender}"></td>
+                <td attr="" num="01" class="age" style="width:50px" th:utext="${c.age}">32</td>
+                <td attr="" num="01" class="num" style="width:90px" th:utext="${c.imei}">1234567890</td>
+                <td attr="" num="01" class="phone" style="width:90px" th:utext="${c.phone}">12345678901</td>
+                <td attr="" num="01" class="num1" style="width:90px" th:utext="${c.helpId}">1234567890</td>
+                <td sttr="" num="01" class="data" style="width:130px;"><input th:utext="${c.startTime}" type="text"
+                                                                              name="time" id="time"
+                                                                              style="width:100%;background: #eae3df;border: none;"/>
+                </td>
+                <td sttr="" num="01" class="data" style="width:130px;"><input th:utext="${c.endTime}" type="text"
+                                                                              name="time" id="time"
+                                                                              style="width:100%;background: #eae3df;border: none;"/>
+                </td>
+                <td attr="location" class="video" num="01" style="width:70px;" th:if="${c.videoUrl != null}">已上传</td>
+                <td attr="location" class="video" num="01" style="width:70px;" th:if="${c.videoUrl == null}">未上传</td>
+                <td attr="location" class="content" num="01" style="width:150px;" th:utext="${c.content}"><input
+                        type="text"
+                        name="content"
+                        id="content"
+                        style="width: 100%;background: #eae3df;border: none;"/>
+                </td>
+                <td attr="location" class="material" num="01" style="width:150px;"><input th:utext="${c.consume}"
+                                                                                          type="text" name="content"
+                                                                                          id="content"
+                                                                                          style="width: 100%;background: #eae3df;border: none;"/>
+                </td>
+                <td attr="" num="01" class="note_taker" style="width:50px;" th:utext="${c.service}">惠东海</td>
+                <td attr="" num="01" class="note_taker" style="width:50px;" th:utext="${c.control}">惠东海</td>
+                <td attr="" num="01" class="note_taker" style="width:50px;" th:utext="${c.master}">惠东海</td>
+                <td attr="" num="01" class="return_visit" style="width:70px;" th:if="${c.return}">惠东海</td>
+                <td attr="" num="01" class="demands_state" style="width:70px;" th:if="${c.status==0}">未完成</td>
+                <td attr="" num="01" class="demands_state" style="width:70px;" th:if="${c.status==1}">已完成</td>
+                <td attr="" num="01" class="state" style="width:70px;" th:if="${c.return}">已完成</td>
+            </tr>
+        </table>
+    </div>
+
+    <ul class="alert_box"
+        style="display: none;width:400px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+        <li style="height:30px;margin:5px 0;padding:0 5px">姓名：<input type="text" class="name"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">性别：
+            <select name="sex" style="width: 300px;">
+                <option value="man">男</option>
+                <option value="woman">女</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">年龄：<input type="text" class="age"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">工号：<input type="text" class="num"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">手机号：<input type="text" class="phone"
+                                                                      style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">诉求状态：
+            <select name="state" class="state" style="width: 300px;">
+                <option value="1">处理中</option>
+                <option value="2">未处理</option>
+                <option value="3">已完成</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">返回时间：<input type="text" class="data"
+                                                                       style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">是否联系亲属：
+            <select name="relatives" class="relatives" style="width: 300px;">
+                <option value="yes">是</option>
+                <option value="no">否</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">紧急联系电话：<input type="text" class="contacts_phone"
+                                                                         style="float:right;width:280px;"/></li>
+
+        <li style="height:30px;margin:5px 0;padding:0 5px">是否自理：
+            <select name="self_care" class="self_care" style="width: 300px;">
+                <option value="yes">是</option>
+                <option value="no">否</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">身高：<input type="text" class="height"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">体重：<input type="text" class="weight"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">血压：<input type="text" class="blood_pressure"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">血脂：<input type="text" class="blood_fat"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">视力：<input type="text" class="vision"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">听力：<input type="text" class="hearing"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">喜好：<input type="text" class="like"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">饮食习惯：<input type="text" class="eating_habit"
+                                                                       style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">药物过敏：<input type="text" class="medicine"
+                                                                       style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">住况：
+            <select name="reside" class="reside" style="width: 300px;">
+                <option value="family">与配偶子女同住</option>
+                <option value="spouse">仅与配偶同住</option>
+                <option value="children">与子女同住</option>
+                <option value="empty_nest">空巢</option>
+            </select>
+        </li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">家庭住址：<input type="text" class="site"
+                                                                       style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">病史：<input type="text" class="history"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px">状态：
+            <select name="state" class="state" style="width: 300px;">
+                <option value="yes">可用</option>
+                <option value="no">不可用</option>
+            </select>
+        </li>
+
+        <li style="height:30px;margin:5px 0;padding:0 5px">备注：<input type="text" class="remarks"
+                                                                     style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                                  style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                                  value="确定"/></li>
+    </ul>
+
+    <div class="page">
+        <ul>
+            <li class="btn Btn" th:if="${appeals.hasPrevious()}"><input type="button" value="上一页"/></li>
+            <li class="btn">
+                <select name="size" id="size" style="width: 80px; margin-top: 12px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="10" selected="selected">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </li>
+            <li class="btn Btn" th:if="${appeals.hasNext()}"><input type="button" value="下一页"/></li>
+            <li class="btn">到第&nbsp;&nbsp;
+                <input type="text" id="page" name="page" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                       maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+            </li>
+            <li><input type="submit" value="确定"/></li>
+            <li>共<span th:text="${appeals.totalPages}">100</span>页</li>
+        </ul>
+        <select class="select" style=" width:3.5rem;margin:-36px 31rem 0 0; float: right;">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+        </select>
+
+    </div>
+</form>
+</body>
+</html>

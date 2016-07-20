@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登山</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/user-manager.css">
+    <link rel="stylesheet" href="css/listview.css">
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/a_key_set.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <p>姓名：<input type="text"></p>
+        <p>标识码：<input type="text"></p>
+        <div class="function">
+            <button class="search">搜索</button>
+            <button class="empty">清空</button>
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>标识码</th>
+            <th>电话</th>
+            <th>住址详情</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>消耗总量</th>
+            <th>历史详情</th>
+            <th>健康状态</th>
+
+        </tr>
+        <tr>
+            <td attr="queue" num="01" id="none"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" id="name">梅长芳</td>
+            <td attr="age" num="01" id="age">23</td>
+            <td attr="num" num="01" id="num">1234567890</td>
+            <td attr="phone" num="01" id="phone">12345678901</td>
+            <td attr="site" id="site" num="01">朝阳区 高碑店村 二区54号</td>
+            <td attr="current_heart_rate" num="01" id="start_time">2016-01-26 10:20:32</td>
+            <td attr="history" id="end_time" num="01">2016-01-26 10:20:32</td>
+            <td attr="range" num="01" id="total_consumption">100KCAL</td>
+            <td attr="historical_details" num="01"><a href="#" id="historical_details">详情</a></td>
+            <td attr="state" num="01" id="state"><a href="#">开启</a><a href="#">关闭</a></td>
+        </tr>
+    </table>
+</div>
+
+<ul class="historical_details_box">
+    <li>
+        <table border="" cellspacing="0" cellpadding="0" width="590" align="center">
+            <tr>
+                <th>次数</th>
+                <th>心率</th>
+                <th>时间</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>65</td>
+                <td>2016-01-26 10:20:32</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>65</td>
+                <td>2016-01-26 10:20:32</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>65</td>
+                <td>2016-01-26 10:20:32</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>65</td>
+                <td>2016-01-26 10:20:32</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="button" class="btn" value="确定"></td>
+            </tr>
+        </table>
+    </li>
+    <!--<li style="height:30px;margin:5px 0;padding:0 5px"></li>-->
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')">&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div></div>
+</body>
+</html>

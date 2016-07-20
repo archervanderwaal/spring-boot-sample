@@ -1,0 +1,692 @@
+div.box {
+    width: 100%;
+    height: auto; /* min-width: 989px;*/
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+div.box .add {
+    width: 100%;
+    height: 30px;
+    background: #0f0;
+    color: #333;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid orange;
+    border-top: none;
+    padding: 0;
+}
+
+div.box .tishi {
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    position: absolute;
+    margin: auto auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    text-align: center;
+    color: orange;
+}
+
+div.box ul {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    padding-top: 3px; /* border-bottom: 1px solid orange;*/
+}
+
+div.box ul li {
+    float: left;
+    padding: 0 6px;
+    height: 26px;
+    text-align: center; /*border: 1px solid orange;*/
+    border-bottom: none;
+    margin: 0 3px;
+}
+
+div.box ul li span {
+    float: left;
+    line-height: 26px;
+}
+
+div.box ul li span.delete {
+    margin-left: 10px;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+div.box .about {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+}
+
+div.box .about p {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 10px;
+}
+
+div.box .about div {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 10px;
+}
+
+div.box .about .function {
+    width: auto;
+    overflow: hidden;
+    height: 33px;
+    padding-top: 3px;
+}
+
+div.box .about .function div {
+    width: 50px;
+    height: 28px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 28px;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+div.box .about .function .search {
+    color: #fff;
+    background: #01936B;
+}
+
+div.box .about .function .empty {
+    color: #fff;
+    background: #0075a9;
+}
+
+div.box .about .function .clear {
+    color: #fff;
+    background: #0075A9;
+}
+
+div.box .about .function .revise {
+    color: #fff;
+    background: #5D4201;
+}
+
+div.box .about .function .increase {
+    color: #fff;
+    background: #00FF00;
+}
+
+div.box .about .function .statistics {
+    color: #fff;
+    background: #00FF00;
+}
+
+div.box .about .function .delete {
+    color: #fff;
+    background: #FF0000;
+}
+
+div.box .about .function .derive {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .news {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .equipment {
+    color: #fff;
+    background: #FF0000;
+}
+
+div.box .about .function .achieve {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .a_key_set {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .auto_on {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .sub {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .key_reminder {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .voice {
+    color: #fff;
+    background: #00FF00;
+}
+
+div.box .about .function .message {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box .about .function .proposal {
+    color: #fff;
+    background: #FF0000;
+}
+
+div.box .about .function .start_alarm {
+    color: #fff;
+    background: #FFA500;
+}
+
+div.box table {
+    width: 100%;
+    height: auto;
+    border-top: 1px solid orange;
+}
+
+div.box table th {
+    border-bottom: 1px solid orange;
+    height: 30px;
+    line-height: 30px;
+    background: #fff;
+    border-right: 1px solid #e3783b;
+}
+
+div.box table td {
+    text-align: center;
+    border-bottom: 1px dashed #777;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #e3783b;
+    position: relative;
+}
+
+div.box table .check:after {
+    width: 10px;
+    height: 5px;
+    position: absolute;
+    right: 2px;
+    top: 12px;
+    content: "";
+    color: orange;
+    background: url(../img/down.png) no-repeat 0 0;
+}
+
+.page {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    bottom: 0px;
+    border-top: 1px solid #e3783b;
+}
+
+.page ul {
+    width: 55%;
+    height: 100%;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.page ul li {
+    float: left;
+    margin: 0px 10px;
+    height: 100%;
+    line-height: 50px;
+}
+
+.page ul li input {
+    width: 80px;
+    text-align: center;
+    border: 1px solid #e3783b;
+    border-radius: 6px;
+    background: #e3783b;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* 新添加的  */
+.page ul li input.Btn {
+    background: #eae3df;
+    cursor: text;
+    color: #000;
+}
+
+/* 新添加的  */
+div.box table tr td:nth-child(1) {
+    width: 50px;
+    background: #fff;
+}
+
+div.box table tr td:nth-child(2) {
+    width: 50px;
+}
+
+div.box table tr td:nth-child(3) {
+    width: 40px;
+}
+
+div.box table tr td:nth-child(4) {
+    width: 50px;
+}
+
+div.box table tr td:nth-child(5) {
+    width: 90px;
+}
+
+div.box table tr td:nth-child(6) {
+    width: 90px;
+}
+
+div.box table tr td:nth-child(7) {
+    width: 90px;
+}
+
+div.box table tr td:nth-child(8) {
+    width: 135px;
+}
+
+div.box table tr td:nth-child(9) {
+    width: 135px;
+}
+
+div.box table tr td:nth-child(10) {
+    width: 70px;
+}
+
+div.box table tr td:nth-child(11) {
+    width: 150px;
+}
+
+div.box table tr td:nth-child(12) {
+    width: 150px;
+}
+
+div.box table tr td.note_taker {
+    width: 50px;
+}
+
+div.box table tr td.demands_state {
+    width: 50px;
+}
+
+div.box table tr td.state {
+    width: 50px;
+}
+
+div.box table tr td.return_visit {
+    width: 50px;
+}
+
+div.box table tr td.reside {
+    width: 150px;
+}
+
+div.box table tr td.smooth {
+    width: 60px;
+}
+
+div.box table tr td.site {
+    width: 220px;
+}
+
+div.box table tr td.data {
+    width: 150px;
+}
+
+div.box table tr td.people_visit {
+    width: 80px;
+}
+
+div.box table tr td.video {
+    width: 70px;
+}
+
+div.box table tr td.none {
+    width: 50px;
+}
+
+div.box table tr td#none {
+    width: 50px;
+}
+
+div.box table tr td#describe {
+    width: 100px;
+}
+
+div.box table tr td select {
+    background: #eae3df;
+    border: none;
+    text-align: center;
+    width: 100%;
+}
+
+/*呼叫用户管理、执行统计页面，点击修改弹出窗口*/
+ul.alert_box {
+    display: none;
+    width: 450px;
+    height: auto;
+    overflow: hidden;
+    background: #eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+ul.alert_box li {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+    width: 410px;
+}
+
+ul.alert_box li input {
+    float: right;
+    width: 300px;
+}
+
+ul.alert_box li select {
+    width: 300px;
+}
+
+ul.alert_box li input.btn {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #e3783b;
+}
+
+/*页面点击添加弹出窗口*/
+ul.increase_box {
+    display: none;
+    width: 450px;
+    height: auto;
+    overflow: hidden;
+    background: #eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+ul.increase_box li {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+    width: 410px;
+}
+
+ul.increase_box li input {
+    float: right;
+    width: 300px;
+}
+
+ul.increase_box li select {
+    width: 300px;
+}
+
+ul.increase_box li input.btn {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #e3783b;
+}
+
+/*充电提醒页面，点击统计弹出窗口*/
+ul.statistics_box {
+    display: none;
+    width: 600px;
+    height: 100px;
+    overflow: hidden;
+    position: fixed;
+    background: #eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+}
+
+ul.statistics_box li {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px
+}
+
+ul.statistics_box li table tr td input.btn {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #e3783b;
+}
+
+/*诉求状态跟踪页面，点击完成弹出窗口*/
+ul.achieve_box {
+    display: none;
+    width: 400px;
+    height: auto;
+    overflow: hidden;
+    background: eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+}
+
+ul.achieve_box li {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+    width: 410px;
+}
+
+ul.achieve_box li select {
+    width: 300px;
+    float: right;
+}
+
+ul.achieve_box li input.btn {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #e3783b;
+}
+
+/*y饮食建议页面，点击建议弹出窗口  */
+ul.proposal_box {
+    display: none;
+    width: 600px;
+    height: 140px;
+    overflow: hidden;
+    position: fixed;
+    background: #eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+}
+
+ul.proposal_box li {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+    width: 410px;
+}
+
+ul.proposal_box li input.btn {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #e3783b;
+}
+
+ul.proposal_box li table tr th input.bt {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+    width: 560px;
+}
+
+ul.proposal_box li table tr td input.nr {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+    width: 560px;
+}
+
+/*评价存档、健康建议页面，点击修改弹出窗口  有BUG*/
+ul.revise_box {
+    display: none;
+    width: 450px;
+    height: 330px;
+    overflow: hidden;
+    position: fixed;
+    background: #eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+ul.revise_box li {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+    width: 410px;
+}
+
+ul.revise_box li input {
+    float: right;
+    width: 400px;
+}
+
+ul.revise_box li select {
+    width: 300px;
+    float: right;
+}
+
+/*心率测试页面，点击一键设置弹出窗口*/
+ul.a_key_set_box {
+    display: none;
+    width: 410px;
+    height: auto;
+    overflow: hidden;
+    position: fixed;
+    background: #eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+}
+
+ul.a_key_set_box li {
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 5px;
+}
+
+ul.a_key_set_box li input {
+    float: right;
+    width: 280px;
+}
+
+ul.a_key_set_box li select {
+    width: 300px;
+    float: right;
+}
+
+ul.a_key_set_box li input.btn {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #e3783b;
+}
+
+/*心率测试页面点击详情，弹出窗口*/
+ul.historical_details_box {
+    display: none;
+    width: 600px;
+    height: 160px;
+    overflow: hidden;
+    position: fixed;
+    background: #eae3df;
+    top: 200px;
+    left: 20%;
+    border: 1px solid #c30013;
+    border-radius: 5px;
+}
+ul.historical_details_box li table tr td input.btn {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #e3783b;
+}
+
+table {
+    margin: 10px auto;
+}
+
+tbody tr {
+    padding-left: 8px;
+}
+
+tbody tr input {
+    margin-left: 15px;
+    border: none;
+    background: none;
+}
+
+.message_box .li-1 {
+    width: 20%;
+    height: 25px;
+    margin: 5px auto;
+}
+
+
+
+
+

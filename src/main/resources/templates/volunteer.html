@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>志愿者信息管理</title>
+    <link rel="stylesheet" href="css/listview.css" th:href="@{css/listview.css}"/>
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" href="css/user-manager.css" th:href="@{css/user-manager.css}"/>
+
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/jquery.serialize-object.min.js"></script>
+
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="java_js/volunteer.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="about">
+        <form action="#" th:action="@{/volunteer.html}" method="get">
+            <p><label for="name">姓名：</label><input type="text" name="name" id="name"/></p>
+            <p><label for="=phone">手机号：</label><input type="text" name="phone" id="=phone"/></p>
+            <div class="function">
+                <input type="submit" th:value="搜索" class="search"/>
+                <input type="reset" th:value="清空" class="empty"/>
+                <input type="button" th:value="修改" class="revise"/>
+                <input type="button" th:value="增加" class="increase"/>
+            </div>
+        </form>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="cb" id="cb" onclick="fx()"/></th>
+            <td>序号</td>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>手机号</th>
+            <th>服务类型</th>
+            <th>紧急联系人</th>
+            <th>紧急联系人电话</th>
+            <th>家庭地址</th>
+        </tr>
+        <tr th:each="c:${employees}">
+            <td id="none"><input type="checkbox" name="fvs" id="fvs"/></td>
+            <td id="number" th:text="${c.id}">1</td>
+            <td id="name" th:utext="${c.name}">梅长芳</td>
+            <td id="sex" style="width:40px;" th:if="${c.gender}">女</td>
+            <td id="age" th:utext="${c.age}">32</td>
+            <td id="phone" th:utext="${c.phone}">12345678901</td>
+            <td id="service">陪护老人</td>
+            <td id="contacts" th:utext="${c.contactName}">李强</td>
+            <td id="contact_phone" th:utext="${c.contactPhone}">18910011818</td>
+            <td id="site" th:utext="${c.address}">朝阳区 高碑店村 二区54号</td>
+        </tr>
+    </table>
+</div>
+
+<form action="#" th:action="@{/createVolunteer.html}" th:object="${employees}" id="createVolunteer" method="post">
+    <ul class="increase_box"
+        style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background:#eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px; padding-bottom: 10px;">
+        <li><label for="createName">姓名：</label><input type="text" class="name" name="name" id="createName"
+                                                      style="width: 70%"/></li>
+        <li><label for="createGender">性别：</label>
+            <select name="gender" id="createGender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </li>
+        <li><label for="createBirthday">年龄：</label><input type="date" id="createBirthday" name="birthday"
+                                                          style="width: 70%"/></li>
+        <li><label for="createIdentity">身份证号：</label><input type="text" id="createIdentity" name="identity"
+                                                            style="width: 70%"/></li>
+        <li><label for="createPhone">手机号：</label><input type="text" class="phone" name="phone" id="createPhone"
+                                                        style="width: 70%"/></li>
+        <li>服务类型：
+            <select name="serviceType" class="serviceType" id="serviceType">
+                <option value="救援">救援</option>
+                <option value="送货">送货</option>
+                <option value="保洁">保洁</option>
+                <option value="回访">回访</option>
+            </select>
+        </li>
+        <li><label for="contactName">紧急联系人：</label><input type="text" class="contactName" id="contactName"
+                                                          name="contactName" style="width: 70%"/></li>
+        <li><label for="contactPhone">紧急联系电话：</label><input type="text" class="contactPhone" id="contactPhone"
+                                                            name="conPhone" style="width: 70%"/></li>
+        <li><label for="address">地址：</label><input type="text" class="site" name="address" id="address"
+                                                   style="width: 70%"/></li>
+        <li style="align-content: center"><input type="submit" class="btn" value="确定"/><a href="#"><input type="button"
+                                                                                                          class="btn"
+                                                                                                          value="返回"/></a>
+        </li>
+    </ul>
+</form>
+<form action="#" th:action="@{/updatVolunteer.html}" th:object="${employees}" id="createVolunteer" method="post">
+    <ul class="revise_box"
+        style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background:#eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px; padding-bottom: 10px;">
+        <li><label for="createName">姓名：</label><input type="text" class="name" name="name" id="createName"
+                                                     style="width: 70%"/></li>
+        <li><label for="createGender">性别：</label>
+            <select name="gender" id="createGender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </li>
+        <li><label for="createBirthday">年龄：</label><input type="date" id="createBirthday" name="birthday"
+                                                          style="width: 70%"/></li>
+        <li><label for="createIdentity">身份证号：</label><input type="text" id="createIdentity" name="identity"
+                                                            style="width: 70%"/></li>
+        <li><label for="createPhone">手机号：</label><input type="text" class="phone" name="phone" id="createPhone"
+                                                        style="width: 70%"/></li>
+        <li>服务类型：
+            <select name="serviceType" class="serviceType" id="serviceType">
+                <option value="救援">救援</option>
+                <option value="送货">送货</option>
+                <option value="保洁">保洁</option>
+                <option value="回访">回访</option>
+            </select>
+        </li>
+        <li><label for="contactName">紧急联系人：</label><input type="text" class="contactName" id="contactName"
+                                                          name="contactName" style="width: 70%"/></li>
+        <li><label for="contactPhone">紧急联系电话：</label><input type="text" class="contactPhone" id="contactPhone"
+                                                            name="conPhone" style="width: 70%"/></li>
+        <li><label for="address">地址：</label><input type="text" class="site" name="address" id="address"
+                                                   style="width: 70%"/></li>
+        <li style="align-content: center"><input type="submit" class="btn" value="确定"/><a href="#"><input type="button"
+                                                                                                          class="btn"
+                                                                                                          value="返回"/></a>
+        </li>
+    </ul>
+</form>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn"
+                                             style="background:#eae3df; cursor:text; color:#000;" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')" title=""/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select style=" width:3.5rem;margin:-36px 52rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

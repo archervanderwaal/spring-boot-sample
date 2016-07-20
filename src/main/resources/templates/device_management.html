@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>设备管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="java_js/watch.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            width: 304px;
+            height: 25px;
+            margin: 5px 100px 0 0;
+            border: 1px solid #aaa;
+            padding-left: 20px;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .sex {
+            width: 70px;
+            padding-left: 0px;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<form action="#" th:action="@{/device_management.html}" method="get">
+    <div class="box" style="width:auto;">
+        <div class="about">
+            <p><label for="name">姓名：</label><input type="text" id="name" name="name"/></p>
+            <p><label for="phone">手机号：</label><input type="text" id="phone" name="phone"/></p>
+            <p><label for="watchImei">标识码：</label><input type="text" id="watchImei" name="watchImei"/></p>
+            <div class="function">
+                <input type="submit" value="搜索"/>
+                <input type="reset" value="清空"/>
+                <div class="derive" style="width: 70px;" onclick="ajax_output()">导出数据</div>
+            </div>
+
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>手机号</th>
+                <th>标识码</th>
+                <th>套餐</th>
+                <th>会员状态</th>
+                <th>回巢提醒</th>
+                <th></th>
+            </tr>
+            <tr th:each="c:${watchInfo}">
+                <td attr="queue" num="01" class="none" style="width:40px;" th:utext="${c.id}">1</td>
+                <td attr="name" num="01" class="name" style="width:70px;" th:utext="${c.name}">梅长芳</td>
+                <td attr="imei" num="01" class="name" style="width:120px;" th:utext="${c.phone}">12345678901</td>
+                <td attr="name" num="01" class="name" style="width:100px;" th:utext="${c.imei}">1234567890</td>
+                <td attr="name" num="01" class="none" style="width:50px;">
+                    <select name="sex" class="sex">
+                        <option value="one">套餐一</option>
+                        <option value="two">套餐二</option>
+                    </select>
+                </td>
+                <td attr="" num="01" class="money" style="width:70px;">
+                    <select name="sex" class="sex" th:if="${c.serviceStatus==0}">
+                        <option value="yes" selected="selected">不可用</option>
+                        <option value="yes">可用</option>
+                        <option value="no">冻结</option>
+                    </select>
+                    <select name="sex" class="sex" th:if="${c.serviceStatus==1}">
+                        <option value="yes">不可用</option>
+                        <option value="yes" selected="selected">可用</option>
+                        <option value="no">冻结</option>
+                    </select>
+                    <select name="sex" class="sex" th:if="${c.serviceStatus==9}">
+                        <option value="yes">不可用</option>
+                        <option value="yes">可用</option>
+                        <option value="no" selected="selected">冻结</option>
+                    </select>
+                </td>
+                <td><input type="button" id="btn" onclick="" value="立即提醒"/></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="page">
+        <ul>
+            <li class="btn Btn" th:if="${watchInfo.hasPrevious()}"><input type="button" value="上一页"/></li>
+            <li class="btn">
+                <select name="size" id="size" style="width: 80px; margin-top: 12px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="10" selected="selected">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </li>
+            <li class="btn Btn" th:if="${watchInfo.hasNext()}"><input type="button" value="下一页"/></li>
+            <li class="btn">到第&nbsp;&nbsp;
+                <input type="text" id="page" name="page" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                       maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+            </li>
+            <li><input type="submit" value="确定"/></li>
+            <li>共<span th:text="${watchInfo.totalPages}">100</span>页</li>
+        </ul>
+        <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+        </select>
+    </div>
+</form>
+<div style="height:70px"></div>
+</body>
+</html>

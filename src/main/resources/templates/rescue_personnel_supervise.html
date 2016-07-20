@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>救援人员管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="js/assign.js"></script>
+    <script type="text/javascript" src="js/complain_frequency.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+
+        .star {
+            float: left;
+        }
+
+        .star li {
+            float: left;
+            height: 18px;
+            width: 17px;
+            background: url("images/40huise.png") no-repeat;
+            border: none;
+        }
+    </style>
+    <!--<script type="text/javascript" src="js/assign.js"></script>-->
+    <script type="text/javascript" src="js/rescuer/add.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="about">
+        <form action="#" th:action="@{/rescue_personnel_supervise.html}" method="get">
+            <p><label for="name">姓名：</label><input type="text" name="name" id="name"/></p>
+            <p><label for="=phone">手机号：</label><input type="text" name="phone" id="=phone"/></p>
+            <p><label for="id">工号：</label><input type="text" name="id" id="id"/></p>
+            <p><label for="=jurisdiction">管辖区域：</label><input type="text" name="jurisdiction" id="=jurisdiction"/></p>
+            <div class="function">
+                <input type="submit" th:value="搜索" class="search"/>
+                <input type="reset" th:value="清空" class="empty"/>
+                <input type="button" th:value="修改" class="revise"/>
+                <input type="button" th:value="增加" class="increase"/>
+                <input type="button" th:value="删除" class="delete"/>
+                <input type="button" th:value="消息" class="news"/>
+            </div>
+        </form>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>工号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <!--<th>年龄</th>-->
+            <th>手机号</th>
+            <th>管辖区域</th>
+            <th>服务类型</th>
+            <!--<th>救援次数</th>-->
+            <th>状态</th>
+            <!--<th>投诉次数</th>-->
+            <th>紧急联系人</th>
+            <th>紧急联系人电话</th>
+            <th>家庭住址</th>
+            <!--<th>评价</th>-->
+            <!--                <th>指派</th>
+                            <th>启动警报</th>-->
+        </tr>
+        <tr class="tr-06" th:each="c:${employees}">
+            <td id="none"><input type="checkbox" name="fvs"/></td>
+            <td id="num" th:text="${c.id}">1234567890</td>
+            <td id="name" th:utext="${c.name}">梅长芳</td>
+            <td id="sex" style="width:40px;" th:utext="${c.gender}">女</td>
+            <!--<td id="age">32</td>-->
+            <td id="phone" th:utext="${c.phone}">12345678901</td>
+            <td id="jurisdiction" th:text="${c.jurisdiction}">朝阳区</td>
+            <td id="service" style="width:40px;" th:utext="${c.serviceType}">救援</td>
+            <!--<td id="helpCount" th:utext="${c.helpCount}">救援次数</td>-->
+            <td id="status" style="width:40px;" th:utext="${c.status}">忙碌</td>
+            <!--<td><a href="#" class="complain_frequency">6</a></td>-->
+            <td id="contacts" th:utext="${c.contactName}">李强</td>
+            <td id="contact_phone" th:utext="${c.contactPhone}">18910011818</td>
+            <td id="site" th:utext="${c.address}">朝阳区 高碑店村 二区54号</td>
+            <!--<td attr="location" id="complaint_reason" num="01">
+                <ul class="star">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </td>-->
+            <!--                <td><a href="#" class="assign">立即指派</a></td>
+                            <td><input type="button" name="btn" id="btn" value="启动"/></td>-->
+        </tr>
+    </table>
+    </div>
+<ul class="increase_box">
+    <li>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" class="num"/></li>
+    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="name" style=""/></li>
+    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+        <select name="sex" style="">
+            <option value="man">男</option>
+            <option value="woman">女</option>
+        </select>
+    </li>
+    <li>身份证号：<input type="text" class="num"/></li>
+    <li>出生日期：<input type="text" class="birthday"/></li>
+    <li>手&nbsp;&nbsp;机&nbsp;&nbsp;号：<input type="text" class="phone"/></li>
+    <li>管辖区域：<input type="text" class="jurisdiction"/></li>
+    <li>服务类型：
+        <select name="service" class="service">
+            <option value="0" selected="selected">请选择</option>
+            <option value="1">救援</option>
+            <option value="2">送货</option>
+            <option value="3">保洁</option>
+            <option value="4">回访</option>
+        </select>
+    </li>
+    <li>家庭住址：<input type="text" class="site"/></li>
+    <li>紧急联系人姓名：<input type="text" class="contactName"/></li>
+    <li>紧急联系人电话：<input type="text" class="contactPhone"/></li>
+    <!--<li>救援次数：<input type="text" class="frequency"/></li>-->
+    <!--<li>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：-->
+    <!--<select name="state" class="state">-->
+    <!--<option value="yes">可用</option>-->
+    <!--<option value="no">不可用</option>-->
+    <!--</select>-->
+    <!--</li>-->
+    <!--<li>投诉次数：<input type="text" class="complain_frequency"/></li>-->
+
+    <!--<li>评&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<input type="text" class="history"/></li>-->
+    <li style="height:30px;margin:5px 0;padding:0 5px">
+        <input type="submit" class="btn"
+               style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+               value="确定"/>
+        <!--<input type="button" class="btn" style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;" value="返回"/>-->
+    </li>
+</ul>
+<ul class="revise_box">
+    <li>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" class="num"/></li>
+    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="name" style=""/></li>
+    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+        <select name="sex" style="">
+            <option value="man">男</option>
+            <option value="woman">女</option>
+        </select>
+    </li>
+    <li>身份证号：<input type="text" class="num"/></li>
+    <li>出生日期：<input type="text" class="birthday"/></li>
+    <li>手&nbsp;&nbsp;机&nbsp;&nbsp;号：<input type="text" class="phone"/></li>
+    <li>管辖区域：<input type="text" class="jurisdiction"/></li>
+    <li>服务类型：
+        <select name="service" class="service"> 1 ==> 救援 、2 ==> 送货、3 ==> 保洁、4 ==> 回访
+            <option value="0" selected="selected">请选择</option>
+            <option value="1">救援</option>
+            <option value="2">送货</option>
+            <option value="3">保洁</option>
+            <option value="4">回访</option>
+        </select>
+    </li>
+    <li>家庭住址：<input type="text" class="site"/></li>
+    <li>紧急联系人姓名：<input type="text" class="contactName"/></li>
+    <li>紧急联系人电话：<input type="text" class="contactPhone"/></li>
+    <!--<li>救援次数：<input type="text" class="frequency"/></li>-->
+    <!--<li>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：-->
+    <!--<select name="state" class="state">-->
+    <!--<option value="yes">可用</option>-->
+    <!--<option value="no">不可用</option>-->
+    <!--</select>-->
+    <!--</li>-->
+    <!--<li>投诉次数：<input type="text" class="complain_frequency"/></li>-->
+
+    <!--<li>评&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<input type="text" class="history"/></li>-->
+    <li style="height:30px;margin:5px 0;padding:0 5px">
+        <input type="submit" class="btn"
+               style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+               value="确定"/>
+        <!--<input type="button" class="btn" style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;" value="返回"/>-->
+    </li>
+</ul>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="submit" value="确定"/><a href="#"><input type="button" value="返回"/></a></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>查看手表用户</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="java_js/watch.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="about">
+        <!--<p>姓名：<input type="text"/></p>
+        <p>手机号：<input type="text"/></p>
+        <p>标识码：<input type="text"/></p>
+        <p>状态：
+            <select name="sex" class="sex" style="margin-top: 5px;">
+                <option value="1">可用</option>
+                <option value="2">不可用</option>
+                <option value="9">冻结</option>
+            </select>
+        </p>-->
+        <a href="watch_user.html" onClick="history.back(-1);">返回上一页</a>
+        <div class="function">
+
+            <!--<div class="search">搜索</div>
+            <div class="empty">清空</div>
+             <div class="revise">修改</div>
+             <div class="increase">增加</div>
+             <div class="delete">删除</div>
+             <div class="derive" style="width: 70px;">导出数据</div>
+             <div class="derive" style="width: 70px;" onclick="ajax_output()">导出数据</div>-->
+        </div>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>标识号</th>
+            <th>手机号</th>
+            <th>紧急联系人名称</th>
+            <th>紧急联系人电话</th>
+            <th>是否有医保</th>
+            <th>是否自理</th>
+            <th>民族</th>
+            <th>生日</th>
+            <th>血型</th>
+            <th>记忆力</th>
+            <th>身高</th>
+            <th>体重</th>
+            <th>语言表达能力</th>
+            <!--<th>血压</th>-->
+            <!--<th>血脂</th>-->
+            <!--<th>血糖</th>-->
+            <th>视力</th>
+            <th>听力</th>
+            <th>喜好</th>
+            <th>饮食习惯</th>
+            <th>过敏药物</th>
+            <th>住况</th>
+            <th>家庭住址</th>
+            <th>病史</th>
+            <th>状态</th>
+            <th>注册时间</th>
+            <th>备注</th>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" id="none" style="width:60px;"><input type="checkbox" name="fvs"/></td>
+            <td attr="name" num="01" id="name" style="width:60px;" th:utext="${user.name}">梅长芳</td>
+            <td attr="sex" num="01" id="sex" style="width:40px;" th:utext="${user.gender}">女</td>
+            <td attr="age" num="01" id="age" style="width:50px" th:utext="${user.age}">32</td>
+            <td attr="num" num="01" id="num" style="width:100px" th:utext="${user.imei}">1234567890</td>
+            <td attr="phone" num="01" id="phone" style="width:100px" th:utext="${user.phone}">12345678901</td>
+            <td attr="contactname" num="01" id="contacts" style="width:110px;"
+                    th:utext="${user.contactName}">
+            </td>
+            <td attr="contactphone" num="01" id="contacts" style="width:110px;"
+                    th:utext="${user.contactPhone}">
+            </td>
+
+            <td attr="medical" num="01" id="medical" style="width:110px;" th:if="${user.medicare}">是</td>
+            <td attr="self_care" num="01" id="self_care" style="width:80px; text-align:center;" th:if="${user.themselves}">是</td>
+            <td attr="nation" num="01" id="nation" style="width:60px;" th:utext="${user.nationality}">汉</td>
+            <td attr="birthday" num="01" id="birthday" style="width:60px;" th:utext="${user.birthday} + 日">1月15日</td>
+            <td attr="bloodtype" num="01" id="bloodtype" style="width:60px;" th:utext="${user.blood} + 型">O型</td>
+            <td attr="memory" num="01" id="memory" style="width:60px;" th:utext="${user.memory}">较差</td>
+            <td attr="height" num="01" id="height" style="width:80px;" th:utext="${user.height} + cm">170cm</td>
+            <td attr="weight" num="01" id="weight" style="width:80px;" th:utext="${user.weight} + kg">50kg</td>
+            <td attr="weight" num="01" id="language_competence" style="width:60px;" th:utext="${user.language}">较差</td>
+            <!--<td attr="blood_pressure" num="01" id="blood_pressure" style="width:100px;" th:utext="${user.pressure} + mmHg">130~85mmHg</td>-->
+            <!--<td attr="blood_fat" num="01" id="blood_fat" style="width:80px;" th:utext="${user.lipids} + 'mmoi/l'">
+                2.9~5.17mmoi/l
+            </td>-->
+            <!--<td attr="blood_fat" num="01" id="blood_sugar" style="width:80px;" th:utext="${user.bloodSugar} + 'mmol/L'">
+                3.9-&#45;&#45;6.1mmol/L
+            </td>-->
+            <td attr="vision" num="01" id="vision4" style="width:60px;" th:utext="${user.vision}">未知</td>
+            <td attr="hearing" num="01" id="hearing4" style="width:60px;" th:utext="${user.hearing}">未知</td>
+
+            <td attr="like" num="01" id="like" style="width:80px;" th:utext="${user.hobby}"></td>
+            <td attr="eating_habit" num="01" id="eating_habit" style="width:80px;" th:utext="${user.eatingHabits}"></td>
+            <td attr="medicine" num="01" id="medicine" style="width:80px;" th:utext="${user.allergyMedications}">青霉素
+            </td>
+            <td id="living" style="width:70px;" th:utext="${user.living}">子女、配偶同住</td>
+            <td attr="address" id="address" num="01"
+                style="width:150px;overflow: hidden; white-space: nowrap;text-overflow: ellipsis;"
+                th:utext="${user.address}">朝阳区 高碑店村 二区54号
+            </td>
+            <td attr="history" num="01" id="history" style="width:100px; cursor:pointer"
+                th:utext="${user.medical}">艾滋病
+            </td>
+            <!--<td attr="state" num="01" id="state" style="width:70px;" th:if="${user.serviceStatus == 0}">可用</td>
+            <td attr="state" num="01" id="state" style="width:70px;" th:if="${user.serviceStatus == 1}">不可用</td>-->
+            <td attr="state" num="01" class="state" style="width:70px;">
+                <select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==0}">
+                    <option value="不可用" selected="selected">不可用</option>
+                </select>
+                <select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==1}">
+                    <option value="可用" selected="selected">可用</option>
+                </select>
+                <select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==9}">
+                    <option value="冻结" selected="selected">冻结</option>
+                </select>
+            </td>
+
+            <td sttr="data" num="01" id="data" style="width:180px;" th:utext="${user.registerTime}">2016-01-26
+                10:20:32
+            </td>
+            <td attr="remarks" num="01" id="remarks" style="width:70px;" th:utext="${user.remark}"></td>
+        </tr>
+    </table>
+</div>
+
+<ul class="alert_box"
+    style="display: none;width:400px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">姓名：<input type="text" class="name" name="name"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">性别：
+        <select name="gender" style="width: 300px;">
+            <option value="男">男</option>
+            <option value="女">女</option>
+            <option value="未知">未知</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">年龄：<input type="text" class="age" name="age"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">标识号：<input type="text" class="imei" name="imei"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">手机号：<input type="text" class="phone" name="phone"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">是否医保：
+        <select name="medicare" class="medicare" style="width: 300px;">
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">是否自理：
+        <select name="themselves" class="themselves" style="width: 300px;">
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">身高：<input type="text" class="height" name="height"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">体重：<input type="text" class="weight" name="weight"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">语言表达能力：
+        <select name="language" class="language" style="width: 290px;">
+            <option value="正常">正常</option>
+            <option value="障碍">障碍</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">血压：<input type="text" class="pressure" name="pressure"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">血脂：<input type="text" class="lipids" name="lipids"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">血糖：<input type="text" class="bloodSugar" name="bloodSugar"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">视力：<input type="text" class="vision" name="vision"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">听力：<input type="text" class="hearing" name="hearing"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">喜好：<input type="text" class="hobby" name="hobby"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">饮食习惯：<input type="text" class="eatingHabits" name="eatingHabits"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">药物过敏：<input type="text" class="allergyMedications" name="allergyMedications"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">住况：
+        <select name="living" class="living" style="width: 300px;">
+            <option value="family">与配偶子女同住</option>
+            <option value="spouse">仅与配偶同住</option>
+            <option value="children">与子女同住</option>
+            <option value="empty_nest">空巢</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">家庭住址：<input type="text" class="address" name="address"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">病史：<input type="text" class="medicalHistory" name="medicalHistory"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">状态：
+
+        <!--<select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==0}">
+            <option value="no" selected="selected">不可用</option>
+            <option value="yes">可用</option>
+            <option value="freeze">冻结</option>
+        </select>
+        <select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==1}">
+            <option value="no">不可用</option>
+            <option value="yes" selected="selected">可用</option>
+            <option value="freeze">冻结</option>
+        </select>
+        <select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==9}">
+            <option value="no">不可用</option>
+            <option value="yes">可用</option>
+            <option value="freeze" selected="selected">冻结</option>
+        </select>-->
+        <select name="serviceStatus" class="serviceStatus" style="width: 302px;">
+            <option value="no">不可用</option>
+            <option value="yes">可用</option>
+        </select>
+
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">注册时间：<input type="text" class="registerTime" name="registerTime"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">备注：<input type="text" class="remark" name="remark"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/></li>
+</ul>
+
+<ul class="increase_box"
+    style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px">姓名：<input type="text" class="name" name="name"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">性别：
+        <select name="gender" style="width: 300px;">
+            <option value="男">男</option>
+            <option value="女">女</option>
+            <option value="未知">未知</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">年龄：<input type="text" class="age" name="age"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">标识号：<input type="text" class="imei" name="imei"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">手机号：<input type="text" class="phone" name="phone"
+                                                                  style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">是否医保：
+        <select name="medicare" class="medicare" style="width: 300px;">
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">是否自理：
+        <select name="themselves" class="themselves" style="width: 300px;">
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">身高：<input type="text" class="height" name="height"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">体重：<input type="text" class="weight" name="weight"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">语言表达能力：
+        <select name="language" class="language" style="width: 290px;">
+            <option value="正常">正常</option>
+            <option value="障碍">障碍</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">血压：<input type="text" class="pressure" name="pressure"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">血脂：<input type="text" class="lipids" name="lipids"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">血糖：<input type="text" class="bloodSugar" name="bloodSugar"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">视力：<input type="text" class="vision" name="vision"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">听力：<input type="text" class="hearing" name="hearing"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">喜好：<input type="text" class="hobby" name="hobby"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">饮食习惯：<input type="text" class="eatingHabits" name="eatingHabits"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">药物过敏：<input type="text" class="allergyMedications" name="allergyMedications"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">住况：
+        <select name="living" class="living" style="width: 300px;">
+            <option value="family">与配偶子女同住</option>
+            <option value="spouse">仅与配偶同住</option>
+            <option value="children">与子女同住</option>
+            <option value="empty_nest">空巢</option>
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">家庭住址：<input type="text" class="address" name="address"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">病史：<input type="text" class="medicalHistory" name="medicalHistory"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">状态：
+        <!--<select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==0}">
+            <option value="no" selected="selected">不可用</option>
+            <option value="yes">可用</option>
+            <option value="freeze">冻结</option>
+        </select>
+        <select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==1}">
+            <option value="no">不可用</option>
+            <option value="yes" selected="selected">可用</option>
+            <option value="freeze">冻结</option>
+        </select>
+        <select name="serviceStatus" class="serviceStatus" th:if="${user.serviceStatus==9}">
+            <option value="no">不可用</option>
+            <option value="yes">可用</option>
+            <option value="freeze" selected="selected">冻结</option>
+        </select>-->
+        <select name="serviceStatus" class="serviceStatus" style="width: 302px;">
+            <option value="no">不可用</option>
+            <option value="yes">可用</option>
+
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">注册时间：<input type="text" class="registerTime" name="registerTime"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">备注：<input type="text" class="remark" name="remark"
+                                                                 style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/>
+        <select style=" width:3.5rem;margin:-36px 52rem 0 0; float: right;">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+        </select>
+    </li>
+</ul>
+<div style="height:70px"></div>
+</body>
+</html>

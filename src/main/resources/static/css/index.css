@@ -1,0 +1,248 @@
+@charset "utf-8";
+/* header 样式 */
+header {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background: #e3783b;
+}
+
+header div {
+    width: 1100px;
+    height: 100%;
+    line-height: 30px;
+    margin: 0 auto;
+}
+
+header div p {
+    float: left;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+}
+
+header div span {
+    float: right;
+    width: 100px;
+    height: 30px;
+    background: url(../images/arrow.png) no-repeat center center;
+    cursor: pointer;
+}
+
+/* logo 样式 */
+div.logo {
+    width: 1100px;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 auto;
+}
+
+div.logo p {
+    width: 200px;
+    height: 100%;
+    float: left;
+}
+
+div.logo p img {
+    width: 100%;
+    margin-top: 20px;
+}
+
+div.logo .title {
+    width: 500px;
+    height: 100%;
+    float: left;
+    margin-left: 100px;
+    font-size: 30px;
+    line-height: 90px;
+    text-align: center;
+}
+
+div.logo .right {
+    width: 200px;
+    float: right;
+    height: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+div.logo .right p {
+    width: 100%;
+    height: 20px;
+    line-height: 23px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+div.logo .right input {
+    display: block;
+    border: none;
+    background: #e3783b;
+    color: #fff;
+    height: 28px;
+    width: 80px;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+/* 内容 样式 */
+div.container {
+    width: 100%;
+    height: auto;
+    margin: 10px auto 0;
+}
+div.container .listview {
+    width: 13%;
+    height: 1300px;
+    overflow: hidden;
+    float: left;
+    margin-right: 0.5%;
+    border: 1px solid #e3783b;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    margin-left: 1%;
+}
+div.container .listview .title {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background: #e3783b;
+    font-size: 16px;
+    color: #fff;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+div.container .listview .title .slide {
+    width: 20px;
+    height: 20px;
+    background: url(../images/zuo.png) no-repeat 0 0;
+    float: right;
+    margin: 7px 5px 0 0;
+    cursor: pointer;
+}
+div.container .listview li {
+    box-sizing: border-box;
+    padding-left: 14px;
+    line-height: 24px;
+    overflow: hidden;
+    margin-top: 2px;
+    background: rgba(0, 0, 0, 0);
+}
+div.container .listview li.checked {
+    background: #ebaf69;
+}
+div.container .listview li span {
+    padding-left: 28px;
+    overflow: hidden;
+    display: block;
+}
+div.container .listview li span.close {
+    background: url(../images/ybihe.png) no-repeat 0px 5px;
+    padding-left: 12px;
+    overflow: hidden;
+    display: block;
+}
+div.container .listview li span.close.open {
+    background: url(../images/ykai.png) no-repeat 0px 5px;
+    padding-left: 12px;
+    overflow: hidden;
+    display: block;
+}
+div.container .listview li span img {
+    margin-right: 6px;
+    margin-top: 3px;
+}
+div.container .listview li span.three {
+    background: none;
+    padding-left: 0px;
+}
+
+div.container .listview li ul {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+div.container .listview li ul li {
+    padding-left: 36px;
+    overflow: hidden;
+}
+div.container .listview li ul li img {
+    margin-right: 6px;
+}
+
+div.container .listview li ul li span {
+    background: url(../images/jilu.png) no-repeat 0 3px;
+    padding-left: 20px;
+}
+div.container .listview li ul li ul li span {
+    background: none;
+}
+
+div.container .listshow {
+    width: 84%;
+    float: left;
+    height: auto;
+    border: 1px solid #e3783b;
+    box-sizing: border-box;
+}
+div.container .listshow .title {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background: #e3783b;
+    font-size: 16px;
+    color: #fff;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+div.container .listshow ul.top {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    padding-top: 3px;
+    border-bottom: 1px solid #e3783b;
+}
+
+div.container .listshow ul.top li {
+    float: left;
+    padding: 0 10px;
+    height: 25px;
+    text-align: center;
+    margin: 0px 3px;
+    border: 1px solid #c30013;
+}
+
+div.container .listshow ul.top li span {
+    float: left;
+    height: 100%;
+    padding: 0px 5px;
+    line-height: 26px;
+}
+
+div.container .listshow ul.top li span.delete {
+    cursor: pointer;
+    width: 20px;
+    padding: 0 1px;
+    color: #e3783b;
+}
+
+div.container .listshow iframe {
+    width: 100%;
+    height: 1300px;
+}
+
+.listBtn {
+    cursor: pointer;
+    background: #eee;
+}
+
+.listBtn.active {
+    position: relative;
+    bottom: 1px;
+    border-bottom: 1px solid #FDFBFB !important;
+    background: #FDFBFB;
+    height: 26px !important;
+}

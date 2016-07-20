@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>部门管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/jquery.serialize-object.min.js"></script>
+
+    <!--
+        <script type="text/javascript" src="js/modify.js"></script>
+    -->
+    <!-- <script type="text/javascript" src="java_js/dept.js"></script>-->
+    <script type="text/javascript" src="java_js/dept.js" th:src="@{java_js/dept.js}"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <div class="about">
+        <form action="#" method="post" th:action="@{/department.html}">
+            <p>部门名称：<input type="text" id="seachName" name="name"/></p>
+            <div class="function">
+                <input type="submit" value="搜索" class="search"/>
+                <input type="reset" value="清空" class="empty"/>
+                <input type="button" value="增加" class="increase"/>
+                <input type="button" value="修改" class="revise"/>
+            </div>
+        </form>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><input type="checkbox" name="checkbox" id="cb" onclick="fx();"/></th>
+            <th>部门名称</th>
+            <th>部门人数</th>
+            <th>人员信息</th>
+            <!--<th>分配权限</th>-->
+        </tr>
+        <tr th:each="c:${dept}">
+            <!--th:each="c:${dept}"-->
+            <td attr="queue" num="01" id="none" style="width:10%;"><input type="checkbox" name="fvs"/></td>
+            <td attr="id" num="01" id="id" style="display:none;" th:text="${c.id}"></td>
+            <td attr="name" num="01" id="name" style="width:30%;" th:text="${c.name}">研发部</td>
+            <!--th:utext="${c.name}"-->
+            <td attr="" num="01" id="level " style="width:30%;">20</td>
+            <!--th:utext="${c.employees.size()}"-->
+            <td attr="" num="01" id="describe" style="width:30%;"><a href="#">详情</a></td>
+            <!--th:href="@{/department_staff_details.html}"-->
+        </tr>
+    </table>
+</div>
+
+<ul class="alert_box"
+    style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="hidden" class="id"
+                                                              style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">部门名称：<input type="text" class="name"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">所属级别：
+        <select name="name" class="sex" style="width: 304px;">
+            <option value="1">研发部</option>
+            <option value="2">行政部</option>
+            <option value="3">风控部</option>
+            <option value="4">市场部</option>
+            <option value="5">人事部</option>
+            <option value="6">投诉部</option>
+            <!--<option value="gly">管理员</option>-->
+            <!--<option value="zx">坐席</option>-->
+            <!--<option value="fws">服务商</option>-->
+            <!--<option value="wyh">调度</option>-->
+            <!--<option value="wyh">志愿者</option>-->
+            <!--<option value="wyh">饮食专家</option>-->
+            <!--<option value="wyh">监察</option>-->
+            <!--<option value="wyh">投诉部</option>-->
+        </select>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述：<input type="text"
+                                                                                                           class="num"
+                                                                                                           style="float:right;width:300px;"/>
+    </li>
+    <li style="height:30px;margin:5px 0;padding:0 5px">分配权限：<input type="text" class="phone"
+                                                                   style="float:right;width:300px;"/></li>
+    <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                              style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                              value="确定"/>
+        <input type="button" class="btn"
+               style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+               value="返回"/></li>
+</ul>
+<form action="#" th:action="@{/save_department.html}" th:object="${dept}" id="save_department" method="post">
+    <ul class="increase_box"
+        style="display: none;width:450px;height:auto;overflow: hidden;position:fixed;background: #eae3df;top:200px;left:20%;border:1px solid #c30013;border-radius: 5px;">
+        <li style="height:30px;margin:5px 0;padding:0 5px">部门名称：<input type="text" class="name" name="name"
+                                                                       style="float:right;width:300px;"/></li>
+        <li style="height:30px;margin:5px 0;padding:0 5px"><input type="button" class="btn"
+                                                                  style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                                                                  value="返回"/>
+            <input type="submit" class="btn"
+                   style="width:100px;height:30px;text-align: center;display:block;margin:0 auto;border-radius:10px;background:#e3783b;"
+                   value="确定"/></li>
+    </ul>
+</form>
+
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn"
+                                             style="background:#eae3df; cursor:text; color:#000;" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')" title=""/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

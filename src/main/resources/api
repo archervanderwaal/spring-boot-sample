@@ -1,0 +1,265 @@
+/send/message.json
+信息验证码
+String(15) phone
+手机号
+
+/appUser/register.json
+注册
+String(11) phone
+手机号
+String password
+密码
+
+/appUser/login.json
+登录
+String(11) phone
+手机号
+String password
+密码
+
+/appUser/forgotPassword.json
+找回密码
+String(11) phone
+手机号
+String password
+密码
+
+/appUser/getAppUserInfo.json
+通过App用户ID获取App用户信息
+Integer id
+用户Id
+
+/appUser/update.json
+修改手机App用户基本信息
+id
+用户编号 (除id外均为选填)
+String name
+姓名
+String gender
+性别 (男、女)
+String userBirthday
+生日 (yyyy-MM-dd 如： 2015-4-3)
+String sign
+签名
+String hobby
+爱好
+String remark
+自我介绍
+Integer height
+身高
+Integer weight
+体重
+
+/appUser/updateAvatar.json
+修改手机App用户头像 (与下一个接口相似, 测试用)
+Integer id
+用户编号
+InputStream fileStream
+文件数据流
+String fileName
+文件名称(要求带后缀, 如：test.jpg)
+Long fileLength
+文件大小
+
+/apUser/updateAvatarFile.json
+修改手机App用户头像 (与上一个接口相似, 测试用)
+id;
+用户编号
+MultipartFile file
+头像文件
+
+/appUser/bindWatch.json
+绑定手表用户
+Integer id
+App用户编号
+String(15) watchImei
+手表IMEI
+
+/appUser/getAppUserSimpleInfo.json
+登录成功后获取首页数据
+Integer id
+手机app用户编号
+
+/appUser/getAllFamilyMember.json
+通过app用户编号获取全部绑定的用户(家庭成员)的信息
+Integer id
+app用户编号
+
+/appUser/setDefaultUser.json
+通过app用户编号修改app首页默认展示用户(如果不设置, 在首次绑定时默认设置为第一个绑定的手表)
+Integer id
+手机app用户编号
+Integer userId
+手表用户编号
+
+/sleep/add.json
+增加睡眠质量
+Long sDate
+开始时间 (时间戳)
+Long eDate
+结束时间 (时间戳)
+Long fDate
+第一次翻身时间 (时间戳)
+int count
+翻身次数
+String(15) imei
+手表IMEI
+
+/sleep/show.json
+查询睡眠质量
+Integer userId
+手表用户编号
+
+/play/add.json
+增加运动信息
+String(15) imei
+手表标识
+int count
+步数
+Integer distance
+距离
+Integer calories
+卡路里
+(选填) String(10) type
+运动类型(默认：走路)
+
+/play/showToday.json
+查询指定用户当天的运动信息
+Integer userId
+用户编号
+
+/play/show.json
+查询运动信息
+Integer userId
+手表用户编号
+
+/heartRate/save.json
+用户手动测试心率值得上传接口
+String(15) imei
+手表标识
+int value
+心率测试值{-1 => 手臂没有接触; -2 => 手臂摇晃}
+
+/heartRate/add.json
+增加心率信息
+String(15) imei
+手表标识
+int value
+心率测试值{-1 => 手臂没有接触; -2 => 手臂摇晃}
+
+/heartRate/show.json
+查询当天心率信息
+Integer userId
+手表用户编号
+
+/user/getDetailInfo.json
+通过Watch用户编号查询Watch用户信息
+Integer id
+手表用户编号
+
+/user/update.json
+修改手表用户信息
+Integer id
+用户编号(必填)
+String blood
+血型 (A B AB O)
+String gender
+性别 (男 女)
+Integer height
+身高
+Integer weight
+体重
+String(4) hearing
+听力  (较差, 一般, 良好)
+String(4) vision
+视力  (较差, 一般, 良好)
+String(4) memory
+记忆力 (较差, 一般, 良好)
+String living
+居住状况 (子女、配偶同住 | 配偶同住 | 子女同住 | 独居 & 空巢)
+String(10) userBirthday
+生日 (yyyy-MM-dd 如： 2015-4-3 或 2016-03-18)
+String language
+语言表达能力
+String(2) medicare;
+是否有社保 (是 否)
+String(2) themselves;
+自理状况 (是 否)
+String allergyMedications;
+过敏药物
+String medical;
+病史
+String eatingHabits;
+饮食习惯
+String nationality;
+民族 (汉)
+String nickName;
+称呼 (老爷子)
+String address;
+详细住址
+String remark;
+备注
+String(18) idCard;
+身份证号码
+String phone;
+手机号
+String hobby;
+爱好
+String name;
+姓名
+String(20) contactName
+紧急联系人名
+String(11) contactPhone
+紧急联系人电话
+
+/user/getUserHistory.json
+获取用户历史健康分析信息
+Integer id
+手表用户id
+String(10) date
+日期  (必须带'-'号, 且长度必须 < 10, 如：2016-4-6, 2016-03-28)
+
+/user/pullWatchInfo.json
+获取手表用户的位置、电量、运动等信息
+Integer userId
+手表用户编号
+String option
+信息类型:
+====>watcher
+播报天气
+====>heartRate
+心率
+
+/user/setClock.json
+给手表设置闹钟（久坐提醒、用药提醒等）
+Integer userId
+手表用户编号
+String key
+提示类型 {"site","medicine"}
+String value
+时间 (如： -> 11:12)
+String type
+操作 {0 => 删除; 1 => 添加}
+
+/user/setBattery.json
+设置手表电量
+String(15) imei
+手表IMEI
+int battery (0 - 100)
+电量信息
+
+/user/setLocation.json
+设置位置信息
+String(15) imei
+手表IMEI
+String(10) longitude
+经度
+String(10) latitude
+纬度
+
+/user/getOrdering.json
+查询订餐信息
+Integer userId
+手表用户编号
+String(10) date
+日期  (必须带'-'号, 且长度必须 < 10, 如：2016-4-6, 2016-03-28)

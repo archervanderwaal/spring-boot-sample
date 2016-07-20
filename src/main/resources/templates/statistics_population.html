@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>各年龄段人数统计</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" href="css/user-manager.css" th:href="@{css/user-manager.css}"/>
+    <link rel="stylesheet" href="css/listview.css" th:href="@{css/listview.css}"/>
+    <style type="text/css">
+        select {
+            float: right;
+            width: 304px;
+            height: 25px;
+            margin: 5px 100px 0 0;
+            border: 1px solid #aaa;
+            padding-left: 20px;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .sex {
+            width: 70px;
+            padding-left: 0px;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <!--<div class="about">
+        <p>姓名：<input type="text"/></p>
+        <p>标识码：<input type="text"/></p>
+        <div class="function">
+            <button class="search">添加</button>
+            <button class="empty">删除</button>
+            <button class="revise">修改</button>
+        </div>
+    </div>-->
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>年龄</th>
+            <th>0-30</th>
+            <th>30-40</th>
+            <th>40-50</th>
+            <th>50-60</th>
+            <th>60-70</th>
+            <th>70-80</th>
+            <th>80-90</th>
+            <th>90-100</th>
+            <th>100以上</th>
+            <!--<th>未知</th>-->
+            <th>总数</th>
+        </tr>
+        <tr class="tr--001">
+            <td class="none">人数</td>
+            <td class="none" th:text="${ages.one}">1</td>
+            <td class="none" th:text="${ages.two}">10</td>
+            <td class="none" th:text="${ages.three}">20</td>
+            <td class="none" th:text="${ages.four}">30</td>
+            <td class="none" th:text="${ages.five}">40</td>
+            <td class="none" th:text="${ages.six}">50</td>
+            <td class="none" th:text="${ages.seven}">60</td>
+            <td class="none" th:text="${ages.eight}">70</td>
+            <td class="none" th:text="${ages.nine}">80</td>
+            <!--<td class="none" th:text="${ages.kong}">-1</td>-->
+            <td class="site" th:text="${ages.count}">9</td>
+
+        </tr>
+    </table>
+</div>
+<div class="page">
+    <!--<ul>
+        <li class="btn Btn"><input type="button" value="上一页"/></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"/></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" maxlength="3"
+                                             onkeyup="value=value.replace(/[^1234567890-]+/g,'')"/>&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"/></li>
+        <li>共100页</li>
+    </ul>-->
+</div>
+<div></div>
+</body>
+</html>

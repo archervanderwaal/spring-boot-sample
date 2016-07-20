@@ -1,0 +1,489 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜单管理</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu_management.css">
+    <link rel="stylesheet" href="css/listview.css">
+</head>
+
+<body>
+<div class="box" style="width:auto;">
+    <div class="about">
+        <button class="increase">增加</button>
+        <button class="delete">删除</button>
+        <button class="revise">修改</button>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th></th>
+            <th class="th_name"><input type="checkbox">名称</th>
+            <th>路径</th>
+            <th>唯一标识</th>
+            <th>类型</th>
+            <th>排序</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">1</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">用户管理
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">2</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">查看手表用户</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">3</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">救援管理
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">4</td>
+            <td class="name_second2"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/jilu.png"
+                                                                                                   alt="">管辖区域
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">5</td>
+            <td class="name_third"><input type="checkbox"><img src="images/page.png" alt="">救助详情</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">6</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">救援人员管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">7</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">执行统计</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">8</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">救援物品登记</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">9</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">手环管理
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">10</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">睡眠质量</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">11</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">紧急求助</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">12</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">订单处理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">13</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">引路人</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">14</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">充电提醒</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">15</td>
+            <td class="name_second2"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/jilu.png"
+                                                                                                   alt="">健康提醒与建议
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">16</td>
+            <td class="name_third"><input type="checkbox"><img src="images/page.png" alt="">饮食建议</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">17</td>
+            <td class="name_third"><input type="checkbox"><img src="images/page.png" alt="">用药提醒</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">18</td>
+            <td class="name_third"><input type="checkbox"><img src="images/page.png" alt="">生日提醒</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">19</td>
+            <td class="name_third"><input type="checkbox"><img src="images/page.png" alt="">健康建议</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">20</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">天气播报</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">21</td>
+            <td class="name_second2"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/jilu.png"
+                                                                                                   alt="">心率测试
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">22</td>
+            <td class="name_third"><input type="checkbox"><img src="images/page.png" alt="">测试结果</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">23</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">设备管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">24</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">系统管理
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">25</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">菜单管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">26</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">用户管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">27</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">角色管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">28</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">部门管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">29</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">菜单位置管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">30</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">用户登录监控</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">31</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">诉求
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">32</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">诉求筛选</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">33</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">服务配单</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">34</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">评价存单</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">35</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">信息维护
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">36</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">呼叫用户管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">37</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">商户管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">38</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">呼叫信息查询
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">39</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">电话呼叫记录</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">40</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">电话诉求体系统计</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">41</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">统计报告
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">42</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">性别比例统计</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">43</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">健康状况统计</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">44</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">各年龄段人数统计</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">45</td>
+            <td class="name_first"><input type="checkbox"><img src="images/ykai.png" alt=""><img src="images/file.png"
+                                                                                                 alt="">数据维护
+            </td>
+            <td></td>
+            <td></td>
+            <td>功能菜单</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td attr="queue" num="01" class="none" style="width:40px;">46</td>
+            <td class="name_second"><input type="checkbox"><img src="images/jilu.png" alt="">志愿者信息管理</td>
+            <td></td>
+            <td></td>
+            <td>功能按钮</td>
+            <td style="width:60px;">1</td>
+            <td style="width:auto;"></td>
+        </tr>
+    </table>
+</div>
+<div class="page">
+    <ul>
+        <li class="btn Btn"><input type="button" value="上一页"></li>
+        <li class="btn">10</li>
+        <li class="btn Btn"><input type="button" value="下一页"></li>
+        <li class="btn">到第&nbsp;&nbsp;<input type="text" class="Btn" style="background:#eae3df;cursor:text;color:#000;"
+                                             maxlength="3" onkeyup="value=value.replace(/[^1234567890-]+/g,'')">&nbsp;&nbsp;页
+        </li>
+        <li><input type="button" value="确定"></li>
+        <li>共100页</li>
+    </ul>
+    <select class="select" style=" width:3.5rem;margin:-36px 38rem 0 0; float: right;">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+    </select>
+</div>
+<div style="height:70px"></div>
+</body>
+</html>

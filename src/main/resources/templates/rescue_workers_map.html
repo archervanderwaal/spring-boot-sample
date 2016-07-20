@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>救援人员地图</title>
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" href="css/user-manager.css"/>
+    <link rel="stylesheet" href="css/listview.css"/>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/modify.js"></script>
+    <script type="text/javascript" src="js/assign.js"></script>
+    <script type="text/javascript" src="js/complain_frequency.js"></script>
+    <style type="text/css">
+        select {
+            float: right;
+            height: 25px;
+            border: 1px solid #aaa;
+            outline: none;
+            background: #fff;
+        }
+
+        .star {
+            float: left;
+        }
+
+        .star li {
+            float: left;
+            height: 18px;
+            width: 17px;
+            background-image: url("images/40huise.png");
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="about">
+        <p>姓名：<input type="text"/></p>
+        <p>手机号：<input type="text"/></p>
+        <p>工号：<input type="text"/></p>
+        <div class="function">
+            <button class="search">搜索</button>
+            <button class="empty">清空</button>
+        </div>
+    </div>
+
+</div>
+
+<div style="height:70px"></div>
+</body>
+</html>
